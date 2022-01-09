@@ -18,13 +18,13 @@ using System;
     Console.WriteLine(c6);
     Console.WriteLine(c7);
 
-    Produto p1 = new Produto(1, "Refrigerante Guaraná 2L", 10, 60);
-    Produto p2 = new Produto(2, "Pão Francês", 100, 30);
-    Produto p3 = new Produto(3, "Peito de Frango 1KG", 20, 290);
-    Produto p4 = new Produto(4, "Creme Dental", 5, 12.50);
-    Produto p5 = new Produto(5, "Maça", 20, 10);
-    Produto p6 = new Produto(6, "Macarrão 500g", 10, 22);
-    Produto p7 = new Produto(7, "Água sanitária 1L", 10, 30);
+    Produto p1 = new Produto(1, "Refrigerante Guaraná 2L", 10, 60, c1);
+    Produto p2 = new Produto(2, "Pão Francês", 100, 30, c2);
+    Produto p3 = new Produto(3, "Peito de Frango 1KG", 20, 290, c3);
+    Produto p4 = new Produto(4, "Creme Dental", 5, 12.50, c4);
+    Produto p5 = new Produto(5, "Maça", 20, 10, c5);
+    Produto p6 = new Produto(6, "Macarrão 500g", 10, 22, c6);
+    Produto p7 = new Produto(7, "Água sanitária 1L", 10, 30, c7);
     Console.WriteLine(p1);
     Console.WriteLine(p2);
     Console.WriteLine(p3);
@@ -33,3 +33,4 @@ using System;
     Console.WriteLine(p6);
     Console.WriteLine(p7);
   }
+}
