@@ -1,0 +1,2 @@
+language = "csharp"
+run = "mcs -out:main.exe 'Parte 1/teste.cs' ; mono main.exe"
