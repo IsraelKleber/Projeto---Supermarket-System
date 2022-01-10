@@ -19,6 +19,10 @@ class  MainClass{
           case 6 : ProdutoInserir(); break;
           case 7 : ProdutoAtualizar(); break;
           case 8 : ProdutoExcluir(); break;
+          case 9 : PromocaoListar(); break;
+          case 10 : PromocaoInserir(); break;
+          case 11 : PromocaoAtualizar(); break;
+          case 12 : PromocaoExcluir(); break;
         }
       }
       catch (Exception erro){
@@ -39,6 +43,10 @@ class  MainClass{
     Console.WriteLine("6 - Produto - Inserir");
     Console.WriteLine("7 - Produto - Atualizar");
     Console.WriteLine("8 - Produto - Excluir");
+    Console.WriteLine("9 - Promoção - Listar");
+    Console.WriteLine("10 - Promoção - Inserir");
+    Console.WriteLine("11 - Promoção - Atualizar");
+    Console.WriteLine("12 - Promoção - Excluir");
     Console.WriteLine("Escolha uma opção: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -150,6 +158,19 @@ class  MainClass{
     Produto p = nproduto.Listar(id);
     // exclusão da categoria
     nproduto.Excluir(p);
+  }
+  public static void PromocaoListar(){
+    Console.WriteLine("---- Lista de Promoções ---");
+  }
+  public static void PromocaoInserir(){
+    Console.WriteLine("---- Inserção de Promoções ---");
+
+  }
+    public static void PromocaoAtualizar(){
+    Console.WriteLine("---- Atualização de Promoções ---");
+  }
+  public static void PromocaoExcluir(){
+    Console.WriteLine("---- Exclusão de Promoções ---");
 
   }
 }
