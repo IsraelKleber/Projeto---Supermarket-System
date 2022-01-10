@@ -6,7 +6,7 @@ class  MainClass{
 
   public static void Main() {
     int op = 0;
-    Console.WriteLine("---- Supermarket System-----");
+    Console.WriteLine("|==== Supermarket System ====|");
     do {
       try{
         op = Menu();
@@ -34,26 +34,34 @@ class  MainClass{
   }
   public static int Menu(){
     Console.WriteLine();
-    Console.WriteLine("0 - Fim");
-    Console.WriteLine("1 - Categoria - Listar");
-    Console.WriteLine("2 - Categoria - Inserir");
-    Console.WriteLine("3 - Categoria - Atualizar");
-    Console.WriteLine("4 - Categoria - Excluir");
-    Console.WriteLine("5 - Produto - Listar");
-    Console.WriteLine("6 - Produto - Inserir");
-    Console.WriteLine("7 - Produto - Atualizar");
-    Console.WriteLine("8 - Produto - Excluir");
-    Console.WriteLine("9 - Promoção - Listar");
-    Console.WriteLine("10 - Promoção - Inserir");
-    Console.WriteLine("11 - Promoção - Atualizar");
-    Console.WriteLine("12 - Promoção - Excluir");
-    Console.WriteLine("Escolha uma opção: ");
+    Console.WriteLine("0 - Sair do sistema!");
+    Console.WriteLine();
+    Console.WriteLine("Categoria: ");
+    Console.WriteLine("1 - Listar");
+    Console.WriteLine("2 - Inserir");
+    Console.WriteLine("3 - Atualizar");
+    Console.WriteLine("4 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Produto: ");
+    Console.WriteLine("5 - Listar");
+    Console.WriteLine("6 - Inserir");
+    Console.WriteLine("7 - Atualizar");
+    Console.WriteLine("8 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Promoção: ");
+    Console.WriteLine("9  - Listar");
+    Console.WriteLine("10 - Inserir");
+    Console.WriteLine("11 - Atualizar");
+    Console.WriteLine("12 - Excluir");
+    Console.WriteLine();
+    Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
     return op;
   }
   public static void CategoriaListar(){
-    Console.WriteLine("----Lista de Categorias----");
+    Console.WriteLine("|==== Lista de Categorias ====|");
+    Console.WriteLine();
     Categoria[] cs = ncategoria.Listar();
     if (cs.Length == 0){
       Console.WriteLine("Nenhuma categoria cadastrada");
@@ -64,7 +72,8 @@ class  MainClass{
 
   }
   public static void CategoriaInserir(){
-    Console.WriteLine("---- Inserção de Categorias ---");
+    Console.WriteLine("|==== Inserção de Categorias ====|");
+    Console.WriteLine();
     Console.Write("Informe um código para a categoria: ");
     int id = int.Parse(Console.ReadLine());
     Console.Write("Informe uma descrição: ");
@@ -75,7 +84,7 @@ class  MainClass{
     ncategoria.Inserir(c);
   }
   public static void CategoriaAtualizar(){
-    Console.WriteLine("---- Atualização de Categorias ---");
+    Console.WriteLine("|==== Atualização de Categorias ====|");
     CategoriaListar();
     Console.Write("Informe o nº da categoria que deseja atualizar: ");
     int id = int.Parse(Console.ReadLine());
@@ -88,7 +97,7 @@ class  MainClass{
 
   }
   public static void CategoriaExcluir(){
-    Console.WriteLine("---- Exclusão de Categorias ---");
+    Console.WriteLine("|==== Exclusão de Categorias ====|");
     CategoriaListar();
     Console.Write("Informe o nº da categoria que deseja excluir: ");
     int id = int.Parse(Console.ReadLine());
@@ -98,7 +107,8 @@ class  MainClass{
     ncategoria.Excluir(c);
   }
   public static void ProdutoListar(){
-    Console.WriteLine("----Lista de Produtos----");
+    Console.WriteLine("|==== Lista de Produtos====|");
+    Console.WriteLine();
     Produto[] ps = nproduto.Listar();
     if (ps.Length == 0){
       Console.WriteLine("Nenhum produto cadastrado");
@@ -109,7 +119,8 @@ class  MainClass{
 
   }
   public static void ProdutoInserir(){
-    Console.WriteLine("---- Inserção de Produtos ---");
+    Console.WriteLine("|==== Inserção de Produtos ====|");
+    Console.WriteLine();
     Console.Write("Informe um código para o produto: ");
     int id = int.Parse(Console.ReadLine());
     Console.Write("Informe uma descrição: ");
@@ -129,7 +140,8 @@ class  MainClass{
     nproduto.Inserir(p);
   }
   public static void ProdutoAtualizar(){
-    Console.WriteLine("---- Atualização de Produtos ---");
+    Console.WriteLine("|==== Atualização de Produtos ====|");
+    Console.WriteLine();
     ProdutoListar();
     Console.Write("Informe o nº do produto que deseja atualizar: ");
     int id = int.Parse(Console.ReadLine());
@@ -150,7 +162,8 @@ class  MainClass{
     nproduto.Atualizar(p);
   }
   public static void ProdutoExcluir(){
-    Console.WriteLine("---- Exclusão de Produtos ---");
+    Console.WriteLine("|==== Exclusão de Produtos ====|");
+    Console.WriteLine();
     ProdutoListar();
     Console.Write("Informe o nº do produto que deseja excluir: ");
     int id = int.Parse(Console.ReadLine());
@@ -160,17 +173,21 @@ class  MainClass{
     nproduto.Excluir(p);
   }
   public static void PromocaoListar(){
-    Console.WriteLine("---- Lista de Promoções ---");
+    Console.WriteLine("|==== Lista de Promoções ====|");
+    Console.WriteLine();
   }
   public static void PromocaoInserir(){
-    Console.WriteLine("---- Inserção de Promoções ---");
+    Console.WriteLine("|==== Inserção de Promoções ====|");
+    Console.WriteLine();
 
   }
     public static void PromocaoAtualizar(){
-    Console.WriteLine("---- Atualização de Promoções ---");
+    Console.WriteLine("|==== Atualização de Promoções ====|");
+    Console.WriteLine();
   }
   public static void PromocaoExcluir(){
-    Console.WriteLine("---- Exclusão de Promoções ---");
+    Console.WriteLine("|==== Exclusão de Promoções ====|");
+    Console.WriteLine();
 
   }
 }
