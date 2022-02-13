@@ -1,28 +1,37 @@
 using System; 
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 class  MainClass{ 
   private static NCategoria ncategoria = new NCategoria();
   private static NProduto nproduto = new NProduto();
-
+  private static NCliente ncliente = new NCliente();
   public static void Main() {
+  Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
     int op = 0;
     Console.WriteLine("|==== Supermarket System ====|");
     do {
       try{
         op = Menu();
         switch (op){
-          case 1 : CategoriaListar(); break;
-          case 2 : CategoriaInserir(); break;
-          case 3 : CategoriaAtualizar(); break;
-          case 4 : CategoriaExcluir(); break;
-          case 5 : ProdutoListar(); break;
-          case 6 : ProdutoInserir(); break;
-          case 7 : ProdutoAtualizar(); break;
-          case 8 : ProdutoExcluir(); break;
-          case 9 : PromocaoListar(); break;
+          case 1  : CategoriaListar(); break;
+          case 2  : CategoriaInserir(); break;
+          case 3  : CategoriaAtualizar(); break;
+          case 4  : CategoriaExcluir(); break;
+          case 5  : ProdutoListar(); break;
+          case 6  : ProdutoInserir(); break;
+          case 7  : ProdutoAtualizar(); break;
+          case 8  : ProdutoExcluir(); break;
+          case 9  : PromocaoListar(); break;
           case 10 : PromocaoInserir(); break;
           case 11 : PromocaoAtualizar(); break;
           case 12 : PromocaoExcluir(); break;
+          case 13 : ClienteListar(); break;
+          case 14 : ClienteInserir(); break;
+          case 15 : ClienteAtualizar(); break;
+          case 16 : ClienteExcluir(); break;
         }
       }
       catch (Exception erro){
@@ -53,6 +62,12 @@ class  MainClass{
     Console.WriteLine("10 - Inserir");
     Console.WriteLine("11 - Atualizar");
     Console.WriteLine("12 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Cliente: ");
+    Console.WriteLine("13 - Listar");
+    Console.WriteLine("14 - Inserir");
+    Console.WriteLine("15 - Atualizar");
+    Console.WriteLine("16 - Excluir");
     Console.WriteLine();
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
@@ -189,5 +204,64 @@ class  MainClass{
     Console.WriteLine("|==== Exclusão de Promoções ====|");
     Console.WriteLine();
 
+  }
+  public static void ClienteListar(){
+    Console.WriteLine("|==== Lista de clientes ====|");
+    // Lista os clientes
+    Console.WriteLine();
+    List<Cliente> cs = ncliente.Listar();
+    if (cs.Count == 0){
+      Console.WriteLine("Nenhum cliente cadastrado");
+      return;
+    }
+    foreach (Cliente c in cs) Console.WriteLine(c);
+    Console.WriteLine();
+
+  }
+  public static void ClienteInserir(){
+    Console.WriteLine("|==== Inserção de clientes ====|");
+    Console.WriteLine();
+    Console.Write("Informe o nome do cliente: ");
+    string nome = Console.ReadLine();
+    Console.Write("Informe a data de nascimento (dd/mm/aaaa): ");
+    DateTime nasc = DateTime.Parse(Console.ReadLine());
+    Console.Write("Informe seu telefone (00 00000-0000): ");
+    string telefone = Console.ReadLine();
+    Console.Write("Informe seu endereço (rua, numero, bairro e cidade): ");
+    string endereço = Console.ReadLine();
+
+    // Instaciar a classe de Cliente
+    Cliente c = new Cliente { Nome = nome, Nascimento = nasc, Telefone = telefone, Endereço = endereço};
+    // inserção do cliente
+    ncliente.Inserir(c);
+  }
+  public static void ClienteAtualizar(){
+    Console.WriteLine("|==== Atualização de clientes ====|");
+    ClienteListar();
+    Console.Write("Informe o código do cliente que deseja atualizar: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe o nome do cliente: ");
+    string nome = Console.ReadLine();
+    Console.Write("Informe a data de nascimento (dd/mm/aaaa): ");
+    DateTime nasc = DateTime.Parse(Console.ReadLine());
+    Console.Write("Informe seu telefone (00 00000-0000): ");
+    string telefone = Console.ReadLine();
+    Console.Write("Informe seu endereço (rua, numero, bairro e cidade): ");
+    string endereço = Console.ReadLine();
+    // Instaciar a classe de Cliente
+    Cliente c = new Cliente { Id = id, Nome = nome, Nascimento = nasc, Telefone = telefone, Endereço = endereço};
+    // Atualiza o cliente
+    ncliente.Atualizar(c);
+
+  }
+  public static void ClienteExcluir(){
+    Console.WriteLine("|==== Exclusão de clientes ====|");
+    ClienteListar();
+    Console.Write("Informe o código do cliente que deseja excluir: ");
+    int id = int.Parse(Console.ReadLine());
+    // Procura o cliente com esse id
+    Cliente c = ncliente.Listar(id);
+    // exclusão do CLiente
+    ncliente.Excluir(c);
   }
 }
