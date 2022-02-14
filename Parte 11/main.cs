@@ -7,14 +7,17 @@ class  MainClass{
   private static NCategoria ncategoria = new NCategoria();
   private static NProduto nproduto = new NProduto();
   private static NCliente ncliente = new NCliente();
+  private static NVenda nvenda = new NVenda();
+
   private static Cliente clienteLogin = null;
-  
+  private static Venda clienteVenda = null;
+
   public static void Main() {
   Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
     int op = 0;
     int perfil = 0;
-    Console.WriteLine("|==== Supermarket System ====|");
+    Console.WriteLine("|===== Supermarket System =====|");
     do {
       try{
         if (perfil == 0){
@@ -22,46 +25,29 @@ class  MainClass{
           perfil = MenuUsuario();
         }
         if (perfil == 1){
-          op = MenuVendedorOpcao();
-            if(op == 1){
-              op = MenuVendedorCategoria();
-              switch (op){
-                case 1  : CategoriaListar(); MenuVendedorCategoria();break;
-                case 2  : CategoriaInserir(); MenuVendedorCategoria();break;
-                case 3  : CategoriaAtualizar(); MenuVendedorCategoria();break;
-                case 4  : CategoriaExcluir(); MenuVendedorCategoria();break;
-                case 99 : MenuVendedorOpcao(); break;
-              }
-            }
+          op = MenuVendedor();
 
-            else if(op == 2){
-              switch (op){
-                case 5  : ProdutoListar(); break;
-                case 6  : ProdutoInserir(); break;
-                case 7  : ProdutoAtualizar(); break;
-                case 8  : ProdutoExcluir(); break;                
-              }
-            }
-
-            else if(op == 3){
-              switch (op){
-                case 9  : PromocaoListar(); break;
-                case 10 : PromocaoInserir(); break;
-                case 11 : PromocaoAtualizar(); break;
-                case 12 : PromocaoExcluir(); break;              
-              }
-            }
-
-            else if(op == 4){
-              switch (op){
-                case 13 : ClienteListar(); break;
-                case 14 : ClienteInserir(); break;
-                case 15 : ClienteAtualizar(); break;
-                case 16 : ClienteExcluir(); break;
-              }
-            }
+            switch (op){
+            case 1  : CategoriaListar(); break;
+            case 2  : CategoriaInserir(); break;
+            case 3  : CategoriaAtualizar(); break;
+            case 4  : CategoriaExcluir(); break;
+            case 5  : ProdutoListar(); break;
+            case 6  : ProdutoInserir(); break;
+            case 7  : ProdutoAtualizar(); break;
+            case 8  : ProdutoExcluir(); break;
+            case 9  : PromocaoListar(); break;
+            case 10 : PromocaoInserir(); break;
+            case 11 : PromocaoAtualizar(); break;
+            case 12 : PromocaoExcluir(); break;
+            case 13 : ClienteListar(); break;
+            case 14 : ClienteInserir(); break;
+            case 15 : ClienteAtualizar(); break;
+            case 16 : ClienteExcluir(); break;
+            case 17 : VendaListar(); break;
+            case 99 : perfil = 0; break;
           }
-        
+        }
         if (perfil == 2 && clienteLogin == null){
           op = MenuClienteLogin();
           switch (op){
@@ -79,8 +65,8 @@ class  MainClass{
             case 5  : ClienteCarrinhoLimpar(); break;
             case 6  : ClienteCarrinhoComprar(); break;
             case 99 : ClienteLogout(); break;
-          }
         }
+      }
       }
       catch (Exception erro){
         Console.WriteLine(erro.Message);
@@ -91,31 +77,20 @@ class  MainClass{
   }
 
   public static int MenuUsuario() {
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine("---------------------------------");
-    Console.WriteLine("1 - Entrar como vendedor");
-    Console.WriteLine("2 - Entrar como Usuário");
-    Console.WriteLine("---------------------------------");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 0 - Sair do sistema!         |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 1 - Entrar como vendedor     |");
+    Console.WriteLine("| 2 - Entrar como Cliente      |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("|==============================|");
     Console.Write("Informe o perfil selecionado: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
     return op;
   }
-  public static int MenuVendedorOpcao(){
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Categoria: ");
-    Console.WriteLine("2 - Produto: ");
-    Console.WriteLine("3 - Promoção: ");
-    Console.WriteLine("4 - Cliente: ");
-    Console.Write("Informe a opção desejada: ");
-    int op = int.Parse(Console.ReadLine());
-    Console.WriteLine();
-    return op;
-  }
-  public static int MenuVendedorCategoria(){
+  
+  public static int MenuVendedor(){
     Console.WriteLine();
     Console.WriteLine("0 - Sair do sistema!");
     Console.WriteLine();
@@ -124,7 +99,30 @@ class  MainClass{
     Console.WriteLine("2 - Inserir");
     Console.WriteLine("3 - Atualizar");
     Console.WriteLine("4 - Excluir");
-    Console.WriteLine("99 - Voltar para o menu anterior");
+    Console.WriteLine();
+    Console.WriteLine("Produto: ");
+    Console.WriteLine("5 - Listar");
+    Console.WriteLine("6 - Inserir");
+    Console.WriteLine("7 - Atualizar");
+    Console.WriteLine("8 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Promoção: ");
+    Console.WriteLine("9  - Listar");
+    Console.WriteLine("10 - Inserir");
+    Console.WriteLine("11 - Atualizar");
+    Console.WriteLine("12 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Cliente: ");
+    Console.WriteLine("13 - Listar");
+    Console.WriteLine("14 - Inserir");
+    Console.WriteLine("15 - Atualizar");
+    Console.WriteLine("16 - Excluir");
+    Console.WriteLine();
+    Console.WriteLine("Venda: ");
+    Console.WriteLine("17 - Listar");
+    Console.WriteLine();
+    Console.WriteLine("99 - Voltar ao menu anterior");
+    Console.WriteLine();
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -151,8 +149,8 @@ class  MainClass{
     Console.WriteLine();
     Console.WriteLine("1 - Listar minhas compras");
     Console.WriteLine("2 - Listar produtos");
-    Console.WriteLine("3 - Inserir um produto no carinho");
-    Console.WriteLine("4 - Limpar carrinho");
+    Console.WriteLine("3 - Inserir um produto no carrinho");
+    Console.WriteLine("4 - Visualizar o carrinho");
     Console.WriteLine("5 - Limpar o carrinho");
     Console.WriteLine("6 - Confirmar a compra");
     Console.WriteLine("99 - Logout");
@@ -352,6 +350,21 @@ class  MainClass{
     // exclusão do CLiente
     ncliente.Excluir(c);
   }
+  public static void VendaListar() {
+     Console.WriteLine("----- Lista de Vendas -----");
+  //Listar as vendas cadastradas 
+    List<Venda> vs = nvenda.Listar();
+    if (vs.Count == 0) {
+      Console.WriteLine("Nenhuma venda foi cadastrada");
+       return;
+    }
+    foreach(Venda v in vs) {
+      Console.WriteLine(v);
+      foreach (VendaItem item in nvenda.ItemListar(v))
+        Console.WriteLine(" " + item);
+    }
+    Console.WriteLine();
+  }
   public static void ClienteLogin(){
     Console.WriteLine("|----  Login do Cliente ----|");
     Console.WriteLine();
@@ -360,34 +373,78 @@ class  MainClass{
     int id = int.Parse(Console.ReadLine());
     // Logar o cliente com o id informado
     clienteLogin = ncliente.Listar(id);
+    //Abre o carrinho de compra do cliente
+    clienteVenda = nvenda.ListarCarrinho(clienteLogin);
   }
   public static void ClienteLogout(){
-    Console.WriteLine("|----  Cliente Logout ----|");
+    Console.WriteLine("|---- Logout do Cliente ----|");
     Console.WriteLine();
+    if (clienteVenda != null) nvenda.Inserir(clienteVenda, true);
+    // faz o Logout do cliente
     clienteLogin = null;
+    clienteVenda = null;
   }
   public static void ClienteVendaListar(){
-    Console.WriteLine("|----  Cliente Venda Listar ----|");
+    Console.WriteLine("|----  Minhas Compras ----|");
+    //Listar as vendas do cliente
+    List<Venda> vs = nvenda.Listar(clienteLogin);
+    if (vs.Count == 0) {
+      Console.WriteLine("Nenhuma compra foi cadastrada");
+       return;
+    }
+    foreach(Venda v in vs) {
+      Console.WriteLine(v);
+      foreach (VendaItem item in nvenda.ItemListar(v))
+       Console.WriteLine(" " + item);
+    }
     Console.WriteLine();
+   
   }
   public static void ClienteProdutoListar(){
-    Console.WriteLine("|---- Cliente Produto Listar----|");
-    Console.WriteLine();
+    // Lista os produtos cadastrados no sistema
+    ProdutoListar();
   }
-    public static void ClienteProdutoInserir(){
-    Console.WriteLine("|---- Cliente Produto Inserir ----|");
-    Console.WriteLine();
+  public static void ClienteProdutoInserir(){
+    // Lista os produtos cadastrados no sistema
+    ProdutoListar();
+    Console.WriteLine("Informe o código do produto a ser comprado: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe a quantidade: ");
+    int qtd = int.Parse(Console.ReadLine());
+    // procurar o produto pelo id
+    Produto p = nproduto.Listar(id);
+    // Verificar se o produto foi localizado 
+    if(p != null){
+      if (clienteVenda == null){  
+        clienteVenda = new Venda(DateTime.Now, clienteLogin);}
+      nvenda.ItemInserir(clienteVenda, qtd, p);
+    }
   }
   public static void ClienteCarrinhoVisualizar(){
-    Console.WriteLine("|----  Cliente Carrinho Visualizar ----|");
+    // verificar se existe um carrinho
+    if (clienteVenda == null){
+      Console.WriteLine("Nenhum produto no carrinho");
+      return;
+    }
+    
+    List<VendaItem> itens = nvenda.ItemListar(clienteVenda);
+    foreach(VendaItem item in itens) Console.WriteLine(item);
     Console.WriteLine();
   }
   public static void ClienteCarrinhoLimpar(){
-    Console.WriteLine("|----  Cliente Carrinho Limpar ----|");
-    Console.WriteLine();
+    //Verificar se existe um carrinho
+    if (clienteVenda != null)
+      nvenda.ItemExcluir(clienteVenda);
   }
   public static void ClienteCarrinhoComprar(){
-    Console.WriteLine("|---- Cliente Carrinho Comprar----|");
-    Console.WriteLine();
+    //Verificar se existe um carrinho
+    if (clienteVenda == null) {
+      Console.WriteLine("Nenhum produto no carrinho");
+      return;
+    }
+    //Salva a compra do cliente
+    nvenda.Inserir(clienteVenda, false);
+    //Inicia um novo carrinho
+    clienteVenda = null;
   }
 }

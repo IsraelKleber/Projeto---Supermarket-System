@@ -22,28 +22,46 @@ class  MainClass{
           perfil = MenuUsuario();
         }
         if (perfil == 1){
-          op = MenuVendedor();
+          op = MenuVendedorOpcao();
+            if(op == 1){
+              op = MenuVendedorCategoria();
+              switch (op){
+                case 1  : CategoriaListar(); MenuVendedorCategoria();break;
+                case 2  : CategoriaInserir(); MenuVendedorCategoria();break;
+                case 3  : CategoriaAtualizar(); MenuVendedorCategoria();break;
+                case 4  : CategoriaExcluir(); MenuVendedorCategoria();break;
+                case 99 : MenuVendedorOpcao(); break;
+              }
+            }
 
-            switch (op){
-            case 1  : CategoriaListar(); break;
-            case 2  : CategoriaInserir(); break;
-            case 3  : CategoriaAtualizar(); break;
-            case 4  : CategoriaExcluir(); break;
-            case 5  : ProdutoListar(); break;
-            case 6  : ProdutoInserir(); break;
-            case 7  : ProdutoAtualizar(); break;
-            case 8  : ProdutoExcluir(); break;
-            case 9  : PromocaoListar(); break;
-            case 10 : PromocaoInserir(); break;
-            case 11 : PromocaoAtualizar(); break;
-            case 12 : PromocaoExcluir(); break;
-            case 13 : ClienteListar(); break;
-            case 14 : ClienteInserir(); break;
-            case 15 : ClienteAtualizar(); break;
-            case 16 : ClienteExcluir(); break;
-            case 99 : perfil = 0; break;
+            else if(op == 2){
+              switch (op){
+                case 5  : ProdutoListar(); break;
+                case 6  : ProdutoInserir(); break;
+                case 7  : ProdutoAtualizar(); break;
+                case 8  : ProdutoExcluir(); break;                
+              }
+            }
+
+            else if(op == 3){
+              switch (op){
+                case 9  : PromocaoListar(); break;
+                case 10 : PromocaoInserir(); break;
+                case 11 : PromocaoAtualizar(); break;
+                case 12 : PromocaoExcluir(); break;              
+              }
+            }
+
+            else if(op == 4){
+              switch (op){
+                case 13 : ClienteListar(); break;
+                case 14 : ClienteInserir(); break;
+                case 15 : ClienteAtualizar(); break;
+                case 16 : ClienteExcluir(); break;
+              }
+            }
           }
-        }
+        
         if (perfil == 2 && clienteLogin == null){
           op = MenuClienteLogin();
           switch (op){
@@ -61,8 +79,8 @@ class  MainClass{
             case 5  : ClienteCarrinhoLimpar(); break;
             case 6  : ClienteCarrinhoComprar(); break;
             case 99 : ClienteLogout(); break;
+          }
         }
-      }
       }
       catch (Exception erro){
         Console.WriteLine(erro.Message);
@@ -77,15 +95,27 @@ class  MainClass{
     Console.WriteLine("0 - Sair do sistema!");
     Console.WriteLine("---------------------------------");
     Console.WriteLine("1 - Entrar como vendedor");
-    Console.WriteLine("2 - Entrar como Usuário");
+    Console.WriteLine("2 - Entrar como cliente");
     Console.WriteLine("---------------------------------");
     Console.Write("Informe o perfil selecionado: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
     return op;
   }
-  
-  public static int MenuVendedor(){
+  public static int MenuVendedorOpcao(){
+    Console.WriteLine();
+    Console.WriteLine("0 - Sair do sistema!");
+    Console.WriteLine();
+    Console.WriteLine("1 - Categoria: ");
+    Console.WriteLine("2 - Produto: ");
+    Console.WriteLine("3 - Promoção: ");
+    Console.WriteLine("4 - Cliente: ");
+    Console.Write("Informe a opção desejada: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
+  }
+  public static int MenuVendedorCategoria(){
     Console.WriteLine();
     Console.WriteLine("0 - Sair do sistema!");
     Console.WriteLine();
@@ -94,27 +124,7 @@ class  MainClass{
     Console.WriteLine("2 - Inserir");
     Console.WriteLine("3 - Atualizar");
     Console.WriteLine("4 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Produto: ");
-    Console.WriteLine("5 - Listar");
-    Console.WriteLine("6 - Inserir");
-    Console.WriteLine("7 - Atualizar");
-    Console.WriteLine("8 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Promoção: ");
-    Console.WriteLine("9  - Listar");
-    Console.WriteLine("10 - Inserir");
-    Console.WriteLine("11 - Atualizar");
-    Console.WriteLine("12 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Cliente: ");
-    Console.WriteLine("13 - Listar");
-    Console.WriteLine("14 - Inserir");
-    Console.WriteLine("15 - Atualizar");
-    Console.WriteLine("16 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("99 - Voltar ao menu anterior");
-    Console.WriteLine();
+    Console.WriteLine("99 - Voltar para o menu anterior");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
