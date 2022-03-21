@@ -4,17 +4,31 @@ using System.Globalization;
 using System.Threading;
 
 class  MainClass{ 
-  private static NCategoria ncategoria = new NCategoria();
-  private static NProduto nproduto = new NProduto();
+  private static NCategoria ncategoria = NCategoria.Singleton;
+  private static NProduto nproduto = NProduto.Singleton;
   private static NCliente ncliente = new NCliente();
+  private static NVenda nvenda = new NVenda();
+  private static NPromocao npromocao = new NPromocao();
+
   private static Cliente clienteLogin = null;
-  
+  private static Venda clienteVenda = null;
+
   public static void Main() {
   Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+/*
+    try {
+      ncategoria.Abrir();
+      nproduto.Abrir();
+      npromocao.Abrir();
+    }
+    catch(Exception erro) {
+      Console.WriteLine(erro.Message);
+    }*/
 
-    int op = 0;
+    int op = 99;
+    int opção = 0;
     int perfil = 0;
-    Console.WriteLine("|==== Supermarket System ====|");
+    
     do {
       try{
         if (perfil == 0){
@@ -22,42 +36,49 @@ class  MainClass{
           perfil = MenuUsuario();
         }
         if (perfil == 1){
-          op = MenuVendedorOpcao();
-            if(op == 1){
-              op = MenuVendedorCategoria();
+          opção = MenuVendedorOpcao();
+          if(opção == 1){
+            op = MenuVendedorCategoria();
+            switch (op){
+              case 1  : CategoriaListar(); break;
+              case 2  : CategoriaInserir(); break;
+              case 3  : CategoriaAtualizar(); break;
+              case 4  : CategoriaExcluir(); break;
+            }
+          }
+
+          else if(opção == 2){
+            op = MenuVendedorProduto();
+            switch (op){
+              case 1  : ProdutoListar(); break;
+              case 2  : ProdutoInserir(); break;
+              case 3  : ProdutoAtualizar(); break;
+              case 4  : ProdutoExcluir(); break;                
+            }
+          }
+
+            else if(opção == 3){
+              op = MenuVendedorPromocao();
               switch (op){
-                case 1  : CategoriaListar(); MenuVendedorCategoria();break;
-                case 2  : CategoriaInserir(); MenuVendedorCategoria();break;
-                case 3  : CategoriaAtualizar(); MenuVendedorCategoria();break;
-                case 4  : CategoriaExcluir(); MenuVendedorCategoria();break;
+                case 1  : PromocaoListar(); break;
+                case 2 : PromocaoInserir(); break;
+                case 3 : PromocaoAtualizar(); break;
+                case 4 : PromocaoExcluir(); break;              
+              }
+            }
+
+            else if(opção == 4){
+              op = MenuVendedorCliente();
+              switch (op){
+                case 1 : ClienteListar(); break;
+                case 2 : ClienteInserir(); break;
+                case 3 : ClienteAtualizar(); break;
+                case 4 : ClienteExcluir(); break;
+              }
+            }
+            else if(opção == 99){
+                switch (op){
                 case 99 : MenuVendedorOpcao(); break;
-              }
-            }
-
-            else if(op == 2){
-              switch (op){
-                case 5  : ProdutoListar(); break;
-                case 6  : ProdutoInserir(); break;
-                case 7  : ProdutoAtualizar(); break;
-                case 8  : ProdutoExcluir(); break;                
-              }
-            }
-
-            else if(op == 3){
-              switch (op){
-                case 9  : PromocaoListar(); break;
-                case 10 : PromocaoInserir(); break;
-                case 11 : PromocaoAtualizar(); break;
-                case 12 : PromocaoExcluir(); break;              
-              }
-            }
-
-            else if(op == 4){
-              switch (op){
-                case 13 : ClienteListar(); break;
-                case 14 : ClienteInserir(); break;
-                case 15 : ClienteAtualizar(); break;
-                case 16 : ClienteExcluir(); break;
               }
             }
           }
@@ -89,27 +110,47 @@ class  MainClass{
     } while (op != 0);
     Console.WriteLine("Obrigado! Volte sempre!");
   }
+/*
+    try {
+      ncategoria.Salvar();
+      nproduto.Salvar();
+      npromocao.Salvar();
+    } 
+    catch(Exception erro) {
+      Console.WriteLine(erro.Message);
+    }
+  }*/
 
   public static int MenuUsuario() {
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine("---------------------------------");
-    Console.WriteLine("1 - Entrar como vendedor");
-    Console.WriteLine("2 - Entrar como cliente");
-    Console.WriteLine("---------------------------------");
+    Console.WriteLine("|===== Supermarket System =====|");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 0 - Sair do sistema!         |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 1 - Entrar como Vendedor     |");
+    Console.WriteLine("| 2 - Entrar como Cliente      |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("|==============================|");
     Console.Write("Informe o perfil selecionado: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
     return op;
   }
+  
+
   public static int MenuVendedorOpcao(){
     Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Categoria: ");
-    Console.WriteLine("2 - Produto: ");
-    Console.WriteLine("3 - Promoção: ");
-    Console.WriteLine("4 - Cliente: ");
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Categoria                 |");
+    Console.WriteLine("| 02 - Produto                   |");
+    Console.WriteLine("| 03 - Promoção                  |");
+    Console.WriteLine("| 04 - Cliente                   |");
+    Console.WriteLine("| 05 - Venda                     |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -117,14 +158,74 @@ class  MainClass{
   }
   public static int MenuVendedorCategoria(){
     Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|            CATEGORIA           |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Listar                    |");
+    Console.WriteLine("| 02 - Inserir                   |");
+    Console.WriteLine("| 03 - Atualizar                 |");
+    Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
+    Console.Write("Informe a opção desejada: ");
+    int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    Console.WriteLine("Categoria: ");
-    Console.WriteLine("1 - Listar");
-    Console.WriteLine("2 - Inserir");
-    Console.WriteLine("3 - Atualizar");
-    Console.WriteLine("4 - Excluir");
-    Console.WriteLine("99 - Voltar para o menu anterior");
+    return op;
+  }
+
+    public static int MenuVendedorProduto(){
+    Console.WriteLine();
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|            PRODUTO             |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Listar                    |");
+    Console.WriteLine("| 02 - Inserir                   |");
+    Console.WriteLine("| 03 - Atualizar                 |");
+    Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
+    Console.Write("Informe a opção desejada: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
+  }
+
+    public static int MenuVendedorPromocao(){
+    Console.WriteLine();
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|            PROMOÇÃO            |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Listar                    |");
+    Console.WriteLine("| 02 - Inserir                   |");
+    Console.WriteLine("| 03 - Atualizar                 |");
+    Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
+    Console.Write("Informe a opção desejada: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
+  }
+
+    public static int MenuVendedorCliente(){
+    Console.WriteLine();
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|            CLIENTE             |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Listar                    |");
+    Console.WriteLine("| 02 - Inserir                   |");
+    Console.WriteLine("| 03 - Atualizar                 |");
+    Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -132,12 +233,14 @@ class  MainClass{
   }
 
   public static int MenuClienteLogin(){
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Login");
-    Console.WriteLine("99 - Voltar para o menu anterior");
-    Console.WriteLine();
+    Console.WriteLine("|===== Supermarket System =====|");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 00 - Sair do sistema!        |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 01 - Login                   |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("|==============================|");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -146,16 +249,19 @@ class  MainClass{
 
   public static int MenuClienteLogout(){
     Console.WriteLine("Bem vindo(a), " + clienteLogin.Nome + "!");
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Listar minhas compras");
-    Console.WriteLine("2 - Listar produtos");
-    Console.WriteLine("3 - Inserir um produto no carinho");
-    Console.WriteLine("4 - Limpar carrinho");
-    Console.WriteLine("5 - Limpar o carrinho");
-    Console.WriteLine("6 - Confirmar a compra");
-    Console.WriteLine("99 - Logout");
+    Console.WriteLine("|======= Supermarket System ======|");
+    Console.WriteLine("|                                 |");
+    Console.WriteLine("| 00 - Sair do sistema!           |");
+    Console.WriteLine("|                                 |");
+    Console.WriteLine("| 01 - Listar minhas compras      |");
+    Console.WriteLine("| 02 - Listar produtos            |");
+    Console.WriteLine("| 03 - Inserir produto no carrinho|");
+    Console.WriteLine("| 04 - Visualizar o carrinho      |");
+    Console.WriteLine("| 05 - Limpar o carrinho          |");
+    Console.WriteLine("| 06 - Confirmar a compra         |");
+    Console.WriteLine("|                                 |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior    |");
+    Console.WriteLine("|=================================|");
     Console.WriteLine();
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
@@ -168,6 +274,8 @@ class  MainClass{
     Categoria[] cs = ncategoria.Listar();
     if (cs.Length == 0){
       Console.WriteLine("Nenhuma categoria cadastrada");
+      Console.WriteLine();
+
       return;
     }
     foreach (Categoria c in cs) Console.WriteLine(c);
@@ -215,6 +323,7 @@ class  MainClass{
     Produto[] ps = nproduto.Listar();
     if (ps.Length == 0){
       Console.WriteLine("Nenhum produto cadastrado");
+      Console.WriteLine();
       return;
     }
     foreach (Produto p in ps) Console.WriteLine(p);
@@ -289,7 +398,7 @@ class  MainClass{
     Console.WriteLine();
   }
   public static void PromocaoExcluir(){
-    Console.WriteLine("|==== Exclusão de Promoções ====|");
+    Console.WriteLine("|===== Exclusão de Promoções =====|");
     Console.WriteLine();
 
   }
@@ -300,6 +409,7 @@ class  MainClass{
     List<Cliente> cs = ncliente.Listar();
     if (cs.Count == 0){
       Console.WriteLine("Nenhum cliente cadastrado");
+      Console.WriteLine();
       return;
     }
     foreach (Cliente c in cs) Console.WriteLine(c);
@@ -352,6 +462,22 @@ class  MainClass{
     // exclusão do CLiente
     ncliente.Excluir(c);
   }
+  public static void VendaListar() {
+     Console.WriteLine("----- Lista de Vendas -----");
+  //Listar as vendas cadastradas 
+    List<Venda> vs = nvenda.Listar();
+    if (vs.Count == 0) {
+      Console.WriteLine("Nenhuma venda foi cadastrada");
+      Console.WriteLine();
+       return;
+    }
+    foreach(Venda v in vs) {
+      Console.WriteLine(v);
+      foreach (VendaItem item in nvenda.ItemListar(v))
+        Console.WriteLine(" " + item);
+    }
+    Console.WriteLine();
+  }
   public static void ClienteLogin(){
     Console.WriteLine("|----  Login do Cliente ----|");
     Console.WriteLine();
@@ -360,34 +486,81 @@ class  MainClass{
     int id = int.Parse(Console.ReadLine());
     // Logar o cliente com o id informado
     clienteLogin = ncliente.Listar(id);
+    //Abre o carrinho de compra do cliente
+    clienteVenda = nvenda.ListarCarrinho(clienteLogin);
   }
   public static void ClienteLogout(){
-    Console.WriteLine("|----  Cliente Logout ----|");
+    Console.WriteLine("|---- Logout do Cliente ----|");
     Console.WriteLine();
+    if (clienteVenda != null) nvenda.Inserir(clienteVenda, true);
+    // faz o Logout do cliente
     clienteLogin = null;
+    clienteVenda = null;
   }
   public static void ClienteVendaListar(){
-    Console.WriteLine("|----  Cliente Venda Listar ----|");
+    Console.WriteLine("|----  Minhas Compras ----|");
+    //Listar as vendas do cliente
+    List<Venda> vs = nvenda.Listar(clienteLogin);
+    if (vs.Count == 0) {
+      Console.WriteLine("Nenhuma compra foi cadastrada");
+      Console.WriteLine();
+       return;
+    }
+    foreach(Venda v in vs) {
+      Console.WriteLine(v);
+      foreach (VendaItem item in nvenda.ItemListar(v))
+       Console.WriteLine(" " + item);
+    }
     Console.WriteLine();
+   
   }
   public static void ClienteProdutoListar(){
-    Console.WriteLine("|---- Cliente Produto Listar----|");
-    Console.WriteLine();
+    // Lista os produtos cadastrados no sistema
+    ProdutoListar();
   }
-    public static void ClienteProdutoInserir(){
-    Console.WriteLine("|---- Cliente Produto Inserir ----|");
-    Console.WriteLine();
+  public static void ClienteProdutoInserir(){
+    // Lista os produtos cadastrados no sistema
+    ProdutoListar();
+    Console.WriteLine("Informe o código do produto a ser comprado: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe a quantidade: ");
+    int qtd = int.Parse(Console.ReadLine());
+    // procurar o produto pelo id
+    Produto p = nproduto.Listar(id);
+    // Verificar se o produto foi localizado 
+    if(p != null){
+      if (clienteVenda == null){  
+        clienteVenda = new Venda(DateTime.Now, clienteLogin);}
+      nvenda.ItemInserir(clienteVenda, qtd, p);
+    }
   }
   public static void ClienteCarrinhoVisualizar(){
-    Console.WriteLine("|----  Cliente Carrinho Visualizar ----|");
+    // verificar se existe um carrinho
+    if (clienteVenda == null){
+      Console.WriteLine("Nenhum produto no carrinho");
+      Console.WriteLine();
+      return;
+    }
+    
+    List<VendaItem> itens = nvenda.ItemListar(clienteVenda);
+    foreach(VendaItem item in itens) Console.WriteLine(item);
     Console.WriteLine();
   }
   public static void ClienteCarrinhoLimpar(){
-    Console.WriteLine("|----  Cliente Carrinho Limpar ----|");
-    Console.WriteLine();
+    //Verificar se existe um carrinho
+    if (clienteVenda != null)
+      nvenda.ItemExcluir(clienteVenda);
   }
   public static void ClienteCarrinhoComprar(){
-    Console.WriteLine("|---- Cliente Carrinho Comprar----|");
-    Console.WriteLine();
+    //Verificar se existe um carrinho
+    if (clienteVenda == null) {
+      Console.WriteLine("Nenhum produto no carrinho");
+      Console.WriteLine();
+      return;
+    }
+    //Salva a compra do cliente
+    nvenda.Inserir(clienteVenda, false);
+    //Inicia um novo carrinho
+    clienteVenda = null;
   }
 }

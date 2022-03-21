@@ -17,7 +17,6 @@ class  MainClass{
 
     int op = 0;
     int perfil = 0;
-    Console.WriteLine("|===== Supermarket System =====|");
     do {
       try{
         if (perfil == 0){
@@ -77,10 +76,11 @@ class  MainClass{
   }
 
   public static int MenuUsuario() {
+    Console.WriteLine("|===== Supermarket System =====|");
     Console.WriteLine("|                              |");
     Console.WriteLine("| 0 - Sair do sistema!         |");
     Console.WriteLine("|                              |");
-    Console.WriteLine("| 1 - Entrar como vendedor     |");
+    Console.WriteLine("| 1 - Entrar como Vendedor     |");
     Console.WriteLine("| 2 - Entrar como Cliente      |");
     Console.WriteLine("|                              |");
     Console.WriteLine("|==============================|");
@@ -91,38 +91,33 @@ class  MainClass{
   }
   
   public static int MenuVendedor(){
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("Categoria: ");
-    Console.WriteLine("1 - Listar");
-    Console.WriteLine("2 - Inserir");
-    Console.WriteLine("3 - Atualizar");
-    Console.WriteLine("4 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Produto: ");
-    Console.WriteLine("5 - Listar");
-    Console.WriteLine("6 - Inserir");
-    Console.WriteLine("7 - Atualizar");
-    Console.WriteLine("8 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Promoção: ");
-    Console.WriteLine("9  - Listar");
-    Console.WriteLine("10 - Inserir");
-    Console.WriteLine("11 - Atualizar");
-    Console.WriteLine("12 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Cliente: ");
-    Console.WriteLine("13 - Listar");
-    Console.WriteLine("14 - Inserir");
-    Console.WriteLine("15 - Atualizar");
-    Console.WriteLine("16 - Excluir");
-    Console.WriteLine();
-    Console.WriteLine("Venda: ");
-    Console.WriteLine("17 - Listar");
-    Console.WriteLine();
-    Console.WriteLine("99 - Voltar ao menu anterior");
-    Console.WriteLine();
+    Console.WriteLine("|===== Supermarket System =====|");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 00 - Sair do sistema!        |");
+    Console.WriteLine("|          CATEGORIA           |");
+    Console.WriteLine("| 01 - Listar                  |");
+    Console.WriteLine("| 02 - Inserir                 |");
+    Console.WriteLine("| 03 - Atualizar               |");
+    Console.WriteLine("| 04 - Excluir                 |");
+    Console.WriteLine("|           PRODUTO            |");
+    Console.WriteLine("| 05 - Listar                  |");
+    Console.WriteLine("| 06 - Inserir                 |");
+    Console.WriteLine("| 07 - Atualizar               |");
+    Console.WriteLine("| 08 - Excluir                 |");
+    Console.WriteLine("|           PROMOÇÃO           |");
+    Console.WriteLine("| 09 - Listar                  |");
+    Console.WriteLine("| 10 - Inserir                 |");
+    Console.WriteLine("| 11 - Atualizar               |");
+    Console.WriteLine("| 12 - Excluir                 |");
+    Console.WriteLine("|            CLIENTE           |");
+    Console.WriteLine("| 13 - Listar                  |");
+    Console.WriteLine("| 14 - Inserir                 |");
+    Console.WriteLine("| 15 - Atualizar               |");
+    Console.WriteLine("| 16 - Excluir                 |");
+    Console.WriteLine("|             VENDA            |");
+    Console.WriteLine("| 17 - Listar                  |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior |");
+    Console.WriteLine("|==============================|");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -130,12 +125,14 @@ class  MainClass{
   }
 
   public static int MenuClienteLogin(){
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Login");
-    Console.WriteLine("99 - Voltar para o menu anterior");
-    Console.WriteLine();
+    Console.WriteLine("|===== Supermarket System =====|");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 0 - Sair do sistema!         |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("| 1 - Login                    |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior |");
+    Console.WriteLine("|                              |");
+    Console.WriteLine("|==============================|");
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
@@ -144,16 +141,19 @@ class  MainClass{
 
   public static int MenuClienteLogout(){
     Console.WriteLine("Bem vindo(a), " + clienteLogin.Nome + "!");
-    Console.WriteLine();
-    Console.WriteLine("0 - Sair do sistema!");
-    Console.WriteLine();
-    Console.WriteLine("1 - Listar minhas compras");
-    Console.WriteLine("2 - Listar produtos");
-    Console.WriteLine("3 - Inserir um produto no carrinho");
-    Console.WriteLine("4 - Visualizar o carrinho");
-    Console.WriteLine("5 - Limpar o carrinho");
-    Console.WriteLine("6 - Confirmar a compra");
-    Console.WriteLine("99 - Logout");
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 0 - Sair do sistema!           |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 1 - Listar minhas compras      |");
+    Console.WriteLine("| 2 - Listar produtos            |");
+    Console.WriteLine("| 3 - Inserir produto no carrinho|");
+    Console.WriteLine("| 4 - Visualizar o carrinho      |");
+    Console.WriteLine("| 5 - Limpar o carrinho          |");
+    Console.WriteLine("| 6 - Confirmar a compra         |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
     Console.WriteLine();
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
@@ -166,6 +166,8 @@ class  MainClass{
     Categoria[] cs = ncategoria.Listar();
     if (cs.Length == 0){
       Console.WriteLine("Nenhuma categoria cadastrada");
+      Console.WriteLine();
+
       return;
     }
     foreach (Categoria c in cs) Console.WriteLine(c);
@@ -213,6 +215,7 @@ class  MainClass{
     Produto[] ps = nproduto.Listar();
     if (ps.Length == 0){
       Console.WriteLine("Nenhum produto cadastrado");
+      Console.WriteLine();
       return;
     }
     foreach (Produto p in ps) Console.WriteLine(p);
@@ -287,7 +290,7 @@ class  MainClass{
     Console.WriteLine();
   }
   public static void PromocaoExcluir(){
-    Console.WriteLine("|==== Exclusão de Promoções ====|");
+    Console.WriteLine("|===== Exclusão de Promoções =====|");
     Console.WriteLine();
 
   }
@@ -298,6 +301,7 @@ class  MainClass{
     List<Cliente> cs = ncliente.Listar();
     if (cs.Count == 0){
       Console.WriteLine("Nenhum cliente cadastrado");
+      Console.WriteLine();
       return;
     }
     foreach (Cliente c in cs) Console.WriteLine(c);
@@ -356,6 +360,7 @@ class  MainClass{
     List<Venda> vs = nvenda.Listar();
     if (vs.Count == 0) {
       Console.WriteLine("Nenhuma venda foi cadastrada");
+      Console.WriteLine();
        return;
     }
     foreach(Venda v in vs) {
@@ -390,6 +395,7 @@ class  MainClass{
     List<Venda> vs = nvenda.Listar(clienteLogin);
     if (vs.Count == 0) {
       Console.WriteLine("Nenhuma compra foi cadastrada");
+      Console.WriteLine();
        return;
     }
     foreach(Venda v in vs) {
@@ -424,6 +430,7 @@ class  MainClass{
     // verificar se existe um carrinho
     if (clienteVenda == null){
       Console.WriteLine("Nenhum produto no carrinho");
+      Console.WriteLine();
       return;
     }
     
@@ -440,6 +447,7 @@ class  MainClass{
     //Verificar se existe um carrinho
     if (clienteVenda == null) {
       Console.WriteLine("Nenhum produto no carrinho");
+      Console.WriteLine();
       return;
     }
     //Salva a compra do cliente
