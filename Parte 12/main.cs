@@ -15,7 +15,7 @@ class  MainClass{
 
   public static void Main() {
   Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
-/*
+
     try {
       ncategoria.Abrir();
       nproduto.Abrir();
@@ -23,7 +23,7 @@ class  MainClass{
     }
     catch(Exception erro) {
       Console.WriteLine(erro.Message);
-    }*/
+    }
 
     int op = 99;
     int opção = 0;
@@ -40,6 +40,7 @@ class  MainClass{
           if(opção == 1){
             op = MenuVendedorCategoria();
             switch (op){
+              case 0 : op = 0; break;
               case 1  : CategoriaListar(); break;
               case 2  : CategoriaInserir(); break;
               case 3  : CategoriaAtualizar(); break;
@@ -50,6 +51,7 @@ class  MainClass{
           else if(opção == 2){
             op = MenuVendedorProduto();
             switch (op){
+              case 0 : op = 0; break;
               case 1  : ProdutoListar(); break;
               case 2  : ProdutoInserir(); break;
               case 3  : ProdutoAtualizar(); break;
@@ -60,6 +62,7 @@ class  MainClass{
             else if(opção == 3){
               op = MenuVendedorPromocao();
               switch (op){
+                case 0 : op = 0; break;
                 case 1  : PromocaoListar(); break;
                 case 2 : PromocaoInserir(); break;
                 case 3 : PromocaoAtualizar(); break;
@@ -70,6 +73,7 @@ class  MainClass{
             else if(opção == 4){
               op = MenuVendedorCliente();
               switch (op){
+                case 0 : op = 0; break;
                 case 1 : ClienteListar(); break;
                 case 2 : ClienteInserir(); break;
                 case 3 : ClienteAtualizar(); break;
@@ -77,8 +81,8 @@ class  MainClass{
               }
             }
             else if(opção == 99){
-                switch (op){
-                case 99 : MenuVendedorOpcao(); break;
+                switch (opção){
+                case 99 : MenuUsuario(); break;
               }
             }
           }
@@ -102,16 +106,16 @@ class  MainClass{
             case 99 : ClienteLogout(); break;
           }
         }
-      }
-      catch (Exception erro){
+  }
+    catch (Exception erro) {
         Console.WriteLine(erro.Message);
         op = 100;
       }
-    } while (op != 0);
+    } while (op != 0); {
     Console.WriteLine("Obrigado! Volte sempre!");
   }
-/*
-    try {
+
+  try {
       ncategoria.Salvar();
       nproduto.Salvar();
       npromocao.Salvar();
@@ -119,7 +123,7 @@ class  MainClass{
     catch(Exception erro) {
       Console.WriteLine(erro.Message);
     }
-  }*/
+  }
 
   public static int MenuUsuario() {
     Console.WriteLine("|===== Supermarket System =====|");
@@ -386,6 +390,14 @@ class  MainClass{
   }
   public static void PromocaoListar(){
     Console.WriteLine("|==== Lista de Promoções ====|");
+    Console.WriteLine();
+    Promocao[] pp = npromocao.Listar();
+    if (pp.Length == 0){
+      Console.WriteLine("Nenhuma promoção cadastrado");
+      Console.WriteLine();
+      return;
+    }
+    foreach (Promocao p in pp) Console.WriteLine(p);
     Console.WriteLine();
   }
   public static void PromocaoInserir(){

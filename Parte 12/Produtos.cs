@@ -7,6 +7,7 @@ using System;
     private double preco;
     private int categoriaId;
     private Categoria categoria;
+
   
     //propiedades e construtor necessários para serialização
     public int Id { get => id; set => id = value; } 
@@ -23,7 +24,6 @@ using System;
       this.preco = preco > 0 ? preco : 0;
       this.categoria = categoria;
       this.categoriaId = categoria.GetId();
-
     }
   
     public void SetId(int id){

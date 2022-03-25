@@ -3,7 +3,8 @@ using System;
 class NProduto{
   private Produto[] produtos = new Produto[10];
   private int contadorproduto;
-  
+
+ 
   public Produto[] Listar() {
     Produto[] p = new Produto[contadorproduto];
     Array.Copy(produtos, p, contadorproduto);
