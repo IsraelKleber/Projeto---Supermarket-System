@@ -4,21 +4,25 @@ using System.Text;
 using System.IO;
 
 class NProduto{
-private NProduto() { }
+  private NProduto() { }
   static NProduto obj = new NProduto();
   public static NProduto Singleton { get => obj; }
   
   private Produto[] produtos = new Produto[10];
   private int contadorproduto;
 
-    public void Abrir() {
-    XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
-    StreamReader f = new StreamReader("./produtos.xml",
-    Encoding.Default);
-    produtos = (Produto[]) xml.Deserialize(f);
-    f.Close();
+  public void Abrir() {
+    Arquivo<Produto[]> f = new Arquivo<Produto[]>();
+    produtos = f.Abrir("./produtos.xml");
     contadorproduto = produtos.Length;
     AtualizarCategoria();
+    //XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
+    //StreamReader f = new StreamReader("./produtos.xml",
+    //Encoding.Default);
+    //produtos = (Produto[]) xml.Deserialize(f);
+    //f.Close();
+    //contadorproduto = produtos.Length;
+    //AtualizarCategoria();
   }
 
   private void AtualizarCategoria() {
@@ -28,7 +32,7 @@ private NProduto() { }
      Produto p = produtos[i];
        //Recuperar a categoria
      Categoria c =  NCategoria.Singleton.Listar(p.CategoriaId);
-// Associação entre produto e categoria
+       // Associação entre produto e categoria
      if (c != null) {
        p.SetCategoria(c);
        c.ProdutoInserir(p);
@@ -37,11 +41,14 @@ private NProduto() { }
 }
   
     public void Salvar() {
-    XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
-    StreamWriter f = new StreamWriter("./produtos.xml", false, 
-    Encoding.Default);
-    xml.Serialize(f, Listar());
-    f.Close();
+      Arquivo<Produto[]> f = new Arquivo<Produto[]>();
+      f.Salvar("./produtos.xml", Listar());
+      
+    //XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
+    //StreamWriter f = new StreamWriter("./produtos.xml", false, 
+    //Encoding.Default);
+    //xml.Serialize(f, Listar());
+    //f.Close();
   }
   
   public Produto[] Listar() {

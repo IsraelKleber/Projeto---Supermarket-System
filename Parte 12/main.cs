@@ -6,7 +6,7 @@ using System.Threading;
 class  MainClass{ 
   private static NCategoria ncategoria = NCategoria.Singleton;
   private static NProduto nproduto = NProduto.Singleton;
-  private static NCliente ncliente = new NCliente();
+  private static NCliente ncliente = NCliente.Singleton;
   private static NVenda nvenda = new NVenda();
   private static NPromocao npromocao = new NPromocao();
 
@@ -19,6 +19,7 @@ class  MainClass{
     try {
       ncategoria.Abrir();
       nproduto.Abrir();
+      ncliente.Abrir();
       npromocao.Abrir();
     }
     catch(Exception erro) {
@@ -40,7 +41,7 @@ class  MainClass{
           if(opção == 1){
             op = MenuVendedorCategoria();
             switch (op){
-              case 0 : op = 0; break;
+              case 0  : op = 0; break;
               case 1  : CategoriaListar(); break;
               case 2  : CategoriaInserir(); break;
               case 3  : CategoriaAtualizar(); break;
@@ -51,7 +52,7 @@ class  MainClass{
           else if(opção == 2){
             op = MenuVendedorProduto();
             switch (op){
-              case 0 : op = 0; break;
+              case 0  : op = 0; break;
               case 1  : ProdutoListar(); break;
               case 2  : ProdutoInserir(); break;
               case 3  : ProdutoAtualizar(); break;
@@ -63,7 +64,7 @@ class  MainClass{
               op = MenuVendedorPromocao();
               switch (op){
                 case 0 : op = 0; break;
-                case 1  : PromocaoListar(); break;
+                case 1 : PromocaoListar(); break;
                 case 2 : PromocaoInserir(); break;
                 case 3 : PromocaoAtualizar(); break;
                 case 4 : PromocaoExcluir(); break;              
@@ -118,6 +119,7 @@ class  MainClass{
   try {
       ncategoria.Salvar();
       nproduto.Salvar();
+      ncliente.Salvar();
       npromocao.Salvar();
     } 
     catch(Exception erro) {

@@ -13,20 +13,26 @@ class NCategoria {
   private int contadorcategoria;
 
   public void Abrir() {
-    XmlSerializer xml = new XmlSerializer(typeof(Categoria[]));
-    StreamReader f = new StreamReader("./categorias.xml",
-    Encoding.Default);
-    categorias = (Categoria[]) xml.Deserialize(f);
-    f.Close();
+    Arquivo<Categoria[]> f = new Arquivo<Categoria[]>();
+    categorias = f.Abrir("./categorias.xml");
     contadorcategoria = categorias.Length;
+      
+    //XmlSerializer xml = new XmlSerializer(typeof(Categoria[]));
+    //StreamReader f = new StreamReader("./categorias.xml",
+    //Encoding.Default);
+    //categorias = (Categoria[]) xml.Deserialize(f);
+    //f.Close();
+    //contadorcategoria = categorias.Length;
   }
   
     public void Salvar() {
-    XmlSerializer xml = new XmlSerializer(typeof(Categoria[]));
-    StreamWriter f = new StreamWriter("./categorias.xml", false, 
-    Encoding.Default);
-    xml.Serialize(f, Listar());
-    f.Close();
+      Arquivo<Categoria[]> f = new Arquivo<Categoria[]>();
+      f.Salvar("./categorias.xml", Listar());
+    //XmlSerializer xml = new XmlSerializer(typeof(Categoria[]));
+    //StreamWriter f = new StreamWriter("./categorias.xml", false, 
+    //Encoding.Default);
+    //xml.Serialize(f, Listar());
+    //f.Close();
   }
   
   public Categoria[] Listar() {

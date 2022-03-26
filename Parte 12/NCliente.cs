@@ -2,7 +2,22 @@ using System;
 using System.Collections.Generic;
 
 class NCliente{
+  private NCliente() { }
+  static NCliente obj = new NCliente();
+  public static NCliente Singleton { get => obj; }
+  
   private List<Cliente> clientes = new List<Cliente>();
+
+   public void Abrir() {
+    Arquivo<List<Cliente>> f = new Arquivo<List<Cliente>>();
+    clientes = f.Abrir("./clientes.xml");
+     
+  }
+  
+  public void Salvar() {
+    Arquivo<List<Cliente>> f = new Arquivo<List<Cliente>>();
+    f.Salvar("./clientes.xml", Listar());
+  }
   
   public List<Cliente> Listar(){
     // Retorna uma listas com os clientes cadastrados
