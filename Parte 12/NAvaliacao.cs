@@ -39,6 +39,7 @@ class NAvaliacao{
   
   public List<Avaliacao> Listar() {
     avaliacoes.Sort();
+    avaliacoes.Reverse();
     return avaliacoes;
   }
 

@@ -36,7 +36,7 @@ class  MainClass{
     do {
       try{
         if (perfil == 0){
-          op = 0;
+          op = -1;
           perfil = MenuUsuario();
         }
         if (perfil == 1){
@@ -530,6 +530,7 @@ class  MainClass{
     }
     Console.WriteLine();
   }
+  
   public static void ClienteLogin(){
     Console.WriteLine("|----  Login do Cliente ----|");
     Console.WriteLine();
@@ -540,7 +541,9 @@ class  MainClass{
     clienteLogin = ncliente.Listar(id);
     //Abre o carrinho de compra do cliente
     clienteVenda = nvenda.ListarCarrinho(clienteLogin);
+    Console.WriteLine();
   }
+  
   public static void ClienteLogout(){
     Console.WriteLine("|---- Logout do Cliente ----|");
     Console.WriteLine();
@@ -648,9 +651,15 @@ class  MainClass{
       Console.WriteLine();
       return;
     }
+      double total = 0;
 
     for (int i = 0; i < avaliacaomostrar.Count; i++){
       Console.WriteLine(avaliacaomostrar[i]);
+        total += avaliacaomostrar[i].Nota;
     }
+
+    Console.WriteLine("Média: " + (total/(avaliacaomostrar.Count)).ToString("0.0"));
+
+    
   }
 }

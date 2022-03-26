@@ -12,4 +12,16 @@
     </cliente>
     <clienteId>1</clienteId>
   </Avaliacao>
+  <Avaliacao>
+    <Id>2</Id>
+    <Nota>4</Nota>
+    <cliente>
+      <Id>2</Id>
+      <Nome>Israel</Nome>
+      <Telefone>84 987515555</Telefone>
+      <Endereço>Rua bandeira, 244c</Endereço>
+      <Nascimento>1999-11-18T00:00:00</Nascimento>
+    </cliente>
+    <clienteId>2</clienteId>
+  </Avaliacao>
 </ArrayOfAvaliacao>
