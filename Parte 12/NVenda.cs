@@ -2,7 +2,42 @@ using System;
 using System.Collections.Generic;
 
 class NVenda {
+  private NVenda() { }
+  static NVenda obj = new NVenda();
+  public static NVenda Singleton { get => obj; }
+  
   private List<Venda> vendas = new List<Venda>();
+
+  public void Abrir() {
+    Arquivo<List<Venda>> f = new Arquivo<List<Venda>>();
+    vendas= f.Abrir("./vendas.xml");
+    //Atualizar dados dos clientes
+    AtualizarCliente();
+    //Atualizar dados dos produtos
+    AtualizarProduto();
+  }
+
+  public void AtualizarCliente() {
+    //Percorrer a lista de vendas
+    foreach(Venda v in vendas) {
+      Cliente c = NCliente.Singleton.Listar(v.ClienteId);
+      if (c != null) v.SetCliente(c);
+    }
+  }
+  public void AtualizarProduto() {
+    //percorrer a lista de vendas
+    foreach(Venda v in vendas) {
+      foreach(VendaItem vi in v.ItemListar()) {
+      Produto p = NProduto.Singleton.Listar(vi.ProdutoId);
+      if (p != null) vi.SetProduto(p);
+    }
+  }
+}
+  
+  public void Salvar() {
+    Arquivo<List<Venda>> f = new Arquivo<List<Venda>>();
+    f.Salvar("./vendas.xml", Listar());
+  }
   
   public List<Venda> Listar(){
     // Retorna uma listas com as vendas cadastradas

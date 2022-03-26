@@ -7,7 +7,7 @@ class  MainClass{
   private static NCategoria ncategoria = NCategoria.Singleton;
   private static NProduto nproduto = NProduto.Singleton;
   private static NCliente ncliente = NCliente.Singleton;
-  private static NVenda nvenda = new NVenda();
+  private static NVenda nvenda = NVenda.Singleton;
   private static NPromocao npromocao = new NPromocao();
 
   private static Cliente clienteLogin = null;
@@ -21,6 +21,7 @@ class  MainClass{
       nproduto.Abrir();
       ncliente.Abrir();
       npromocao.Abrir();
+      nvenda.Abrir();
     }
     catch(Exception erro) {
       Console.WriteLine(erro.Message);
@@ -121,6 +122,7 @@ class  MainClass{
       nproduto.Salvar();
       ncliente.Salvar();
       npromocao.Salvar();
+      nvenda.Salvar();
     } 
     catch(Exception erro) {
       Console.WriteLine(erro.Message);

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Venda {
+public class Venda {
  // Atributos do item de VendaItem
  private int id;
  private DateTime data;
@@ -9,12 +9,22 @@ class Venda {
  // Associação entre Venda e cliente
  private Cliente cliente;
  // Associação entre venda e VendaItem
+  private int clienteId;
  private List<VendaItem> itens = new List<VendaItem>();
 
+  // propiedades da venda
+  public int Id { get => id; set => id = value; }
+  public DateTime Data { get => data; set => data = value; }
+  public bool Carrinho { get => carrinho; set => carrinho = value; }
+  public int ClienteId { get => clienteId; set => clienteId = value; }
+  public List<VendaItem> Itens {get => itens; set => itens = value; }
+  public Venda() { }
+  
  public Venda(DateTime data, Cliente cliente) {
   this.data = data;
   this.carrinho = true;
   this.cliente = cliente;
+  this.clienteId = cliente.Id;
   }
   public void SetId(int id) {
    this.id = id;
@@ -27,6 +37,7 @@ class Venda {
   }
   public void SetCliente(Cliente cliente){
     this.cliente = cliente;
+    this.clienteId = cliente.Id;
   }
 
   public int GetId() {
