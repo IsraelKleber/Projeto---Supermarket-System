@@ -7,6 +7,7 @@ class  MainClass{
   private static NCategoria ncategoria = NCategoria.Singleton;
   private static NProduto nproduto = NProduto.Singleton;
   private static NCliente ncliente = NCliente.Singleton;
+  private static NAvaliacao navaliacao = NAvaliacao.Singleton;
   private static NVenda nvenda = NVenda.Singleton;
   private static NPromocao npromocao = new NPromocao();
 
@@ -22,6 +23,7 @@ class  MainClass{
       ncliente.Abrir();
       npromocao.Abrir();
       nvenda.Abrir();
+      navaliacao.Abrir();
     }
     catch(Exception erro) {
       Console.WriteLine(erro.Message);
@@ -92,6 +94,11 @@ class  MainClass{
                 case 1 : VendaListar(); break;
               }
             }
+            else if(opção == 6){
+              switch (opção){
+                case 6 : AvaliacaoMostrar(); break;
+              }
+            }
             else if(opção == 99){
               perfil = 0;
             }
@@ -113,6 +120,7 @@ class  MainClass{
             case 4  : ClienteCarrinhoVisualizar(); break;
             case 5  : ClienteCarrinhoLimpar(); break;
             case 6  : ClienteCarrinhoComprar(); break;
+            case 7  : AvaliacaoInserir(); break;
             case 99 : ClienteLogout(); break;
           }
         }
@@ -131,6 +139,7 @@ class  MainClass{
       ncliente.Salvar();
       npromocao.Salvar();
       nvenda.Salvar();
+      navaliacao.Salvar();
     } 
     catch(Exception erro) {
       Console.WriteLine(erro.Message);
@@ -164,6 +173,7 @@ class  MainClass{
     Console.WriteLine("| 03 - Promoção                  |");
     Console.WriteLine("| 04 - Cliente                   |");
     Console.WriteLine("| 05 - Venda                     |");
+    Console.WriteLine("| 06 - Avaliações do site        |");
     Console.WriteLine("|                                |");
     Console.WriteLine("| 99 - Voltar ao menu anterior   |");
     Console.WriteLine("|================================|");
@@ -264,6 +274,7 @@ class  MainClass{
     return op;
   }
 
+
   public static int MenuClienteLogin(){
     Console.WriteLine("|===== Supermarket System =====|");
     Console.WriteLine("|                              |");
@@ -291,6 +302,7 @@ class  MainClass{
     Console.WriteLine("| 04 - Visualizar o carrinho      |");
     Console.WriteLine("| 05 - Limpar o carrinho          |");
     Console.WriteLine("| 06 - Confirmar a compra         |");
+    Console.WriteLine("| 07 - Avaliação do site          |");
     Console.WriteLine("|                                 |");
     Console.WriteLine("| 99 - Voltar ao menu anterior    |");
     Console.WriteLine("|=================================|");
@@ -537,6 +549,7 @@ class  MainClass{
     clienteLogin = null;
     clienteVenda = null;
   }
+  
   public static void ClienteVendaListar(){
     Console.WriteLine("|----  Minhas Compras ----|");
     //Listar as vendas do cliente
@@ -554,10 +567,12 @@ class  MainClass{
     Console.WriteLine();
    
   }
+  
   public static void ClienteProdutoListar(){
     // Lista os produtos cadastrados no sistema
     ProdutoListar();
   }
+  
   public static void ClienteProdutoInserir(){
     // Lista os produtos cadastrados no sistema
     ProdutoListar();
@@ -574,6 +589,7 @@ class  MainClass{
       nvenda.ItemInserir(clienteVenda, qtd, p);
     }
   }
+  
   public static void ClienteCarrinhoVisualizar(){
     // verificar se existe um carrinho
     if (clienteVenda == null){
@@ -586,11 +602,13 @@ class  MainClass{
     foreach(VendaItem item in itens) Console.WriteLine(item);
     Console.WriteLine();
   }
+  
   public static void ClienteCarrinhoLimpar(){
     //Verificar se existe um carrinho
     if (clienteVenda != null)
       nvenda.ItemExcluir(clienteVenda);
   }
+  
   public static void ClienteCarrinhoComprar(){
     //Verificar se existe um carrinho
     if (clienteVenda == null) {
@@ -602,5 +620,37 @@ class  MainClass{
     nvenda.Inserir(clienteVenda, false);
     //Inicia um novo carrinho
     clienteVenda = null;
+  }
+
+  public static void AvaliacaoInserir(){
+  Console.WriteLine("|==== Realizar Avaliação ====|");
+  Console.WriteLine();
+  Console.Write(clienteLogin.Nome + ", avalie o site de 1 a 5 com seu nível de satisfação: ");
+  int Nota = int.Parse(Console.ReadLine());
+    while (Nota < 1 || Nota > 5){
+      Console.Write("Nota inválida. Digite novamente: ");
+      Nota = int.Parse(Console.ReadLine());
+    }
+
+    Avaliacao avaliacao = new Avaliacao(clienteLogin, Nota);
+
+    navaliacao.Inserir(avaliacao);
+    Console.WriteLine();
+  }
+  
+  public static void AvaliacaoMostrar(){
+    Console.WriteLine("|======= Avaliações =======|");
+    Console.WriteLine();
+    List<Avaliacao> avaliacaomostrar = navaliacao.Listar();
+
+    if (avaliacaomostrar.Count == 0){
+      Console.Write("Site ainda não avaliado!");
+      Console.WriteLine();
+      return;
+    }
+
+    for (int i = 0; i < avaliacaomostrar.Count; i++){
+      Console.WriteLine(avaliacaomostrar[i]);
+    }
   }
 }

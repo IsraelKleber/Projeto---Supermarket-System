@@ -16,29 +16,22 @@ class NProduto{
     produtos = f.Abrir("./Parte 12/produtos.xml");
     contadorproduto = produtos.Length;
     AtualizarCategoria();
-    //XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
-    //StreamReader f = new StreamReader("./produtos.xml",
-    //Encoding.Default);
-    //produtos = (Produto[]) xml.Deserialize(f);
-    //f.Close();
-    //contadorproduto = produtos.Length;
-    //AtualizarCategoria();
   }
 
   private void AtualizarCategoria() {
     //Percorrer o vetor de produtos para atualizar a categoria do produto
     for(int i = 0; i < contadorproduto; i++) {
        //Cada produto no vetor
-     Produto p = produtos[i];
+      Produto p = produtos[i];
        //Recuperar a categoria
-     Categoria c =  NCategoria.Singleton.Listar(p.CategoriaId);
+      Categoria c =  NCategoria.Singleton.Listar(p.CategoriaId);
        // Associação entre produto e categoria
-     if (c != null) {
-       p.SetCategoria(c);
-       c.ProdutoInserir(p);
-     }
+      if (c != null) {
+        p.SetCategoria(c);
+        c.ProdutoInserir(p);
+      }
+    }
   }
-}
   
     public void Salvar() {
       Arquivo<Produto[]> f = new Arquivo<Produto[]>();
