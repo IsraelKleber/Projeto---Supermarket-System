@@ -10,13 +10,13 @@ class NCliente{
 
    public void Abrir() {
     Arquivo<List<Cliente>> f = new Arquivo<List<Cliente>>();
-    clientes = f.Abrir("./clientes.xml");
+    clientes = f.Abrir("./Parte 12/clientes.xml");
      
   }
   
   public void Salvar() {
     Arquivo<List<Cliente>> f = new Arquivo<List<Cliente>>();
-    f.Salvar("./clientes.xml", Listar());
+    f.Salvar("./Parte 12/clientes.xml", Listar());
   }
   
   public List<Cliente> Listar(){

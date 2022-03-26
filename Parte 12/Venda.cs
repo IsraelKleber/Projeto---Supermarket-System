@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class Venda {
  // Atributos do item de VendaItem
- private int id;
- private DateTime data;
- private bool carrinho;
- // Associação entre Venda e cliente
- private Cliente cliente;
- // Associação entre venda e VendaItem
+  private int id;
+  private DateTime data;
+  private bool carrinho;
+   // Associação entre Venda e cliente
+  private Cliente cliente;
+   // Associação entre venda e VendaItem
   private int clienteId;
- private List<VendaItem> itens = new List<VendaItem>();
+  private List<VendaItem> itens = new List<VendaItem>();
 
   // propiedades da venda
   public int Id { get => id; set => id = value; }

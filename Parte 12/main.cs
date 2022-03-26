@@ -39,7 +39,10 @@ class  MainClass{
         }
         if (perfil == 1){
           opção = MenuVendedorOpcao();
-          if(opção == 1){
+          if (opção == 0){
+            op = 0;
+          }
+          else if(opção == 1){
             op = MenuVendedorCategoria();
             switch (op){
               case 0  : op = 0; break;
@@ -57,7 +60,7 @@ class  MainClass{
               case 1  : ProdutoListar(); break;
               case 2  : ProdutoInserir(); break;
               case 3  : ProdutoAtualizar(); break;
-              case 4  : ProdutoExcluir(); break;                
+              case 4  : ProdutoExcluir(); break;
             }
           }
 
@@ -68,7 +71,7 @@ class  MainClass{
                 case 1 : PromocaoListar(); break;
                 case 2 : PromocaoInserir(); break;
                 case 3 : PromocaoAtualizar(); break;
-                case 4 : PromocaoExcluir(); break;              
+                case 4 : PromocaoExcluir(); break;
               }
             }
 
@@ -82,10 +85,15 @@ class  MainClass{
                 case 4 : ClienteExcluir(); break;
               }
             }
-            else if(opção == 99){
-                switch (opção){
-                case 99 : MenuUsuario(); break;
+            else if(opção == 5){
+              op = MenuVendedorVenda();
+              switch (op){
+                case 0 : op = 0; break;
+                case 1 : VendaListar(); break;
               }
+            }
+            else if(opção == 99){
+              perfil = 0;
             }
           }
         
@@ -221,7 +229,7 @@ class  MainClass{
     return op;
   }
 
-    public static int MenuVendedorCliente(){
+  public static int MenuVendedorCliente(){
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|            CLIENTE             |");
@@ -231,6 +239,22 @@ class  MainClass{
     Console.WriteLine("| 02 - Inserir                   |");
     Console.WriteLine("| 03 - Atualizar                 |");
     Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
+    Console.WriteLine("|================================|");
+    Console.Write("Informe a opção desejada: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
+  }
+
+  public static int MenuVendedorVenda(){
+    Console.WriteLine();
+    Console.WriteLine("|====== Supermarket System ======|");
+    Console.WriteLine("|             VENDA              |");
+    Console.WriteLine("| 00 - Sair do sistema!          |");
+    Console.WriteLine("|                                |");
+    Console.WriteLine("| 01 - Listar                    |");
     Console.WriteLine("|                                |");
     Console.WriteLine("| 99 - Voltar ao menu anterior   |");
     Console.WriteLine("|================================|");

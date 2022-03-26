@@ -9,7 +9,7 @@ class NPromocao{
 
   public void Abrir() {
     XmlSerializer xml = new XmlSerializer(typeof(Promocao[]));
-    StreamReader f = new StreamReader("./promocao.xml",
+    StreamReader f = new StreamReader("./Parte 12/promocao.xml",
     Encoding.Default);
     promocao = (Promocao[]) xml.Deserialize(f);
     f.Close();
@@ -18,7 +18,7 @@ class NPromocao{
   
   public void Salvar() {
     XmlSerializer xml = new XmlSerializer(typeof(Promocao[]));
-    StreamWriter f = new StreamWriter("./promocao.xml", false, 
+    StreamWriter f = new StreamWriter("./Parte 12/promocao.xml", false, 
     Encoding.Default);
     xml.Serialize(f, Listar());
     f.Close();

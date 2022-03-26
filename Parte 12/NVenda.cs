@@ -10,7 +10,7 @@ class NVenda {
 
   public void Abrir() {
     Arquivo<List<Venda>> f = new Arquivo<List<Venda>>();
-    vendas= f.Abrir("./vendas.xml");
+    vendas= f.Abrir("./Parte 12/vendas.xml");
     //Atualizar dados dos clientes
     AtualizarCliente();
     //Atualizar dados dos produtos
@@ -36,7 +36,7 @@ class NVenda {
   
   public void Salvar() {
     Arquivo<List<Venda>> f = new Arquivo<List<Venda>>();
-    f.Salvar("./vendas.xml", Listar());
+    f.Salvar("./Parte 12/vendas.xml", Listar());
   }
   
   public List<Venda> Listar(){

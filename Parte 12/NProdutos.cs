@@ -13,7 +13,7 @@ class NProduto{
 
   public void Abrir() {
     Arquivo<Produto[]> f = new Arquivo<Produto[]>();
-    produtos = f.Abrir("./produtos.xml");
+    produtos = f.Abrir("./Parte 12/produtos.xml");
     contadorproduto = produtos.Length;
     AtualizarCategoria();
     //XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
@@ -42,7 +42,7 @@ class NProduto{
   
     public void Salvar() {
       Arquivo<Produto[]> f = new Arquivo<Produto[]>();
-      f.Salvar("./produtos.xml", Listar());
+      f.Salvar("./Parte 12/produtos.xml", Listar());
       
     //XmlSerializer xml = new XmlSerializer(typeof(Produto[]));
     //StreamWriter f = new StreamWriter("./produtos.xml", false, 
