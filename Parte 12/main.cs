@@ -72,8 +72,7 @@ class  MainClass{
                 case 0 : op = 0; break;
                 case 1 : PromocaoListar(); break;
                 case 2 : PromocaoInserir(); break;
-                case 3 : PromocaoAtualizar(); break;
-                case 4 : PromocaoExcluir(); break;
+                case 3 : PromocaoExcluir(); break;
               }
             }
 
@@ -116,11 +115,13 @@ class  MainClass{
           switch (op){
             case 1  : ClienteVendaListar(); break;
             case 2  : ClienteProdutoListar(); break;
-            case 3  : ClienteProdutoInserir(); break;
-            case 4  : ClienteCarrinhoVisualizar(); break;
-            case 5  : ClienteCarrinhoLimpar(); break;
-            case 6  : ClienteCarrinhoComprar(); break;
-            case 7  : AvaliacaoInserir(); break;
+            case 3  : ClientePromocaoListar(); break;
+            case 4  : ClienteProdutoInserir(); break;
+            case 5  : ClienteProdutoInserir(); break;
+            case 6  : ClienteCarrinhoVisualizar(); break;
+            case 7  : ClienteCarrinhoLimpar(); break;
+            case 8  : ClienteCarrinhoComprar(); break;
+            case 9  : AvaliacaoInserir(); break;
             case 99 : ClienteLogout(); break;
           }
         }
@@ -256,8 +257,7 @@ class  MainClass{
     Console.WriteLine("|                                |");
     Console.WriteLine("| 01 - Listar                    |");
     Console.WriteLine("| 02 - Inserir                   |");
-    Console.WriteLine("| 03 - Atualizar                 |");
-    Console.WriteLine("| 04 - Excluir                   |");
+    Console.WriteLine("| 03 - Excluir                   |");
     Console.WriteLine("|                                |");
     Console.WriteLine("| 99 - Voltar ao menu anterior   |");
     Console.WriteLine("|================================|");
@@ -349,20 +349,22 @@ class  MainClass{
     navaliacao.Salvar();
     Console.WriteLine();
     Console.WriteLine("Bem vindo(a), " + clienteLogin.Nome + "!");
-    Console.WriteLine("|======= Supermarket System ======|");
-    Console.WriteLine("|                                 |");
-    Console.WriteLine("| 00 - Sair do sistema!           |");
-    Console.WriteLine("|                                 |");
-    Console.WriteLine("| 01 - Listar minhas compras      |");
-    Console.WriteLine("| 02 - Listar produtos            |");
-    Console.WriteLine("| 03 - Inserir produto no carrinho|");
-    Console.WriteLine("| 04 - Visualizar o carrinho      |");
-    Console.WriteLine("| 05 - Limpar o carrinho          |");
-    Console.WriteLine("| 06 - Confirmar a compra         |");
-    Console.WriteLine("| 07 - Avaliação do site          |");
-    Console.WriteLine("|                                 |");
-    Console.WriteLine("| 99 - Voltar ao menu anterior    |");
-    Console.WriteLine("|=================================|");
+    Console.WriteLine("|======= Supermarket System =======|");
+    Console.WriteLine("|                                  |");
+    Console.WriteLine("| 00 - Sair do sistema!            |");
+    Console.WriteLine("|                                  |");
+    Console.WriteLine("| 01 - Listar minhas compras       |");
+    Console.WriteLine("| 02 - Listar produtos             |");
+    Console.WriteLine("| 03 - Listar promoções            |");
+    Console.WriteLine("| 04 - Inserir produto no carrinho |");
+    Console.WriteLine("| 05 - Inserir promoção no carrinho|");
+    Console.WriteLine("| 06 - Visualizar o carrinho       |");
+    Console.WriteLine("| 07 - Limpar o carrinho           |");
+    Console.WriteLine("| 08 - Confirmar a compra          |");
+    Console.WriteLine("| 09 - Avaliação do site           |");
+    Console.WriteLine("|                                  |");
+    Console.WriteLine("| 99 - Voltar ao menu anterior     |");
+    Console.WriteLine("|==================================|");
     Console.WriteLine();
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
@@ -516,16 +518,37 @@ class  MainClass{
   public static void PromocaoInserir(){
     Console.WriteLine("|==== Inserção de Promoções ====|");
     Console.WriteLine();
+    Console.Write("Informe um código para a promoção: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe uma descrição: ");
+    string descricao = Console.ReadLine();
+    ProdutoListar();
+    Console.Write("Descreva os produtos conforme lista acima: ");
+    string descricaoproduto = Console.ReadLine();
+    Console.Write("Informe o preço do produto: ");
+    double preco = double.Parse(Console.ReadLine());
 
-  }
-    public static void PromocaoAtualizar(){
-    Console.WriteLine("|=== Atualização de Promoções ===|");
+    Promocao pp = new Promocao(id, descricao, descricaoproduto, preco);
+    //Atualizar Produto
+    npromocao.Inserir(pp);
     Console.WriteLine();
+    Console.Write("Promoção inserida com sucesso!");
+    Console.WriteLine();
+
   }
   public static void PromocaoExcluir(){
     Console.WriteLine("|==== Exclusão de Promoções ====|");
     Console.WriteLine();
-
+    ProdutoListar();
+    Console.Write("Informe o nº da promoção que deseja excluir: ");
+    int id = int.Parse(Console.ReadLine());
+    // Instaciar a classe de Categoria
+    Promocao p = npromocao.Listar(id);
+    // exclusão da categoria
+    npromocao.Excluir(p);
+    Console.WriteLine();
+    Console.Write("Promoção excluída com sucesso!");
+    Console.WriteLine();
   }
   public static void ClienteListar(){
     Console.WriteLine("|====== Lista de clientes ======|");
@@ -658,6 +681,11 @@ class  MainClass{
     // Lista os produtos cadastrados no sistema
     ProdutoListar();
   }
+
+  public static void ClientePromocaoListar(){
+    // Lista os produtos cadastrados no sistema
+    PromocaoListar();
+  }
   
   public static void ClienteProdutoInserir(){
     // Lista os produtos cadastrados no sistema
@@ -677,6 +705,26 @@ class  MainClass{
     Console.WriteLine();
     Console.WriteLine("Produto inserido no carrinho");
     Console.WriteLine();
+  }
+
+  public static void ClientePromocaoInserir(){/*
+    // Lista os produtos cadastrados no sistema
+    PromocaoListar();
+    Console.Write("Informe o código da promoção a ser comprado: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe a quantidade: ");
+    int qtd = int.Parse(Console.ReadLine());
+    // procurar o produto pelo id
+    Promocao pp = npromocao.Listar(id);
+    // Verificar se o produto foi localizado 
+    if(pp != null){
+      if (clienteVenda == null){  
+        clienteVenda = new Venda(DateTime.Now, clienteLogin);}
+      nvenda.ItemInserir(clienteVenda, qtd, pp);
+    }
+    Console.WriteLine();
+    Console.WriteLine("Promoção inserida no carrinho");
+    Console.WriteLine();*/
   }
   
   public static void ClienteCarrinhoVisualizar(){

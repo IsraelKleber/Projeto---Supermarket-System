@@ -1,2 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfPromocao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfPromocao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Promocao>
+    <Id>1</Id>
+    <Descricao>Leve 3 e Pague 2</Descricao>
+    <Descricaoproduto>3 Cremes Dentais</Descricaoproduto>
+    <Preco>3.98</Preco>
+  </Promocao>
+  <Promocao>
+    <Id>2</Id>
+    <Descricao>Leve 15 e pague 10</Descricao>
+    <Descricaoproduto>15 pães</Descricaoproduto>
+    <Preco>5</Preco>
+  </Promocao>
+</ArrayOfPromocao>

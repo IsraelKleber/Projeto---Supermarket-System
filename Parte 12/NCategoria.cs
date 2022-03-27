@@ -2,7 +2,8 @@ using System;
 using System.Xml.Serialization;
 using System.Text;
 using System.IO;
-
+using System.Linq;
+  
 class NCategoria {
   
   private NCategoria() { }
@@ -26,6 +27,7 @@ class NCategoria {
   public Categoria[] Listar() {
     Categoria[] c = new Categoria[contadorcategoria];
     Array.Copy(categorias, c, contadorcategoria);
+    c.OrderBy(obj => obj.GetDescricao());
     return c;
   }
 
