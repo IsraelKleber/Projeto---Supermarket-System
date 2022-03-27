@@ -14,4 +14,32 @@
     <Preco>2</Preco>
     <CategoriaId>1</CategoriaId>
   </Produto>
+  <Produto>
+    <Id>3</Id>
+    <Descricao>Vinho Quinta do Morgado</Descricao>
+    <Qtd>30</Qtd>
+    <Preco>12</Preco>
+    <CategoriaId>2</CategoriaId>
+  </Produto>
+  <Produto>
+    <Id>4</Id>
+    <Descricao>Vodka Smirnoff</Descricao>
+    <Qtd>15</Qtd>
+    <Preco>34.99</Preco>
+    <CategoriaId>2</CategoriaId>
+  </Produto>
+  <Produto>
+    <Id>5</Id>
+    <Descricao>Creme Dental</Descricao>
+    <Qtd>10</Qtd>
+    <Preco>1.99</Preco>
+    <CategoriaId>3</CategoriaId>
+  </Produto>
+  <Produto>
+    <Id>6</Id>
+    <Descricao>Sabão em Pó Omo 800g</Descricao>
+    <Qtd>12</Qtd>
+    <Preco>7.99</Preco>
+    <CategoriaId>3</CategoriaId>
+  </Produto>
 </ArrayOfProduto>

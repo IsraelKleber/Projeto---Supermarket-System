@@ -4,4 +4,12 @@
     <Id>1</Id>
     <Descricao>Padaria</Descricao>
   </Categoria>
+  <Categoria>
+    <Id>2</Id>
+    <Descricao>Adega e Bebidas</Descricao>
+  </Categoria>
+  <Categoria>
+    <Id>3</Id>
+    <Descricao>Higiene e Limpeza</Descricao>
+  </Categoria>
 </ArrayOfCategoria>
