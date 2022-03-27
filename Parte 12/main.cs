@@ -163,6 +163,13 @@ class  MainClass{
   
 
   public static int MenuVendedorOpcao(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|                                |");
@@ -183,6 +190,13 @@ class  MainClass{
     return op;
   }
   public static int MenuVendedorCategoria(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|            CATEGORIA           |");
@@ -202,6 +216,13 @@ class  MainClass{
   }
 
     public static int MenuVendedorProduto(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+        
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|            PRODUTO             |");
@@ -221,6 +242,13 @@ class  MainClass{
   }
 
     public static int MenuVendedorPromocao(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+        
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|            PROMOÇÃO            |");
@@ -240,6 +268,13 @@ class  MainClass{
   }
 
   public static int MenuVendedorCliente(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|            CLIENTE             |");
@@ -255,10 +290,18 @@ class  MainClass{
     Console.Write("Informe a opção desejada: ");
     int op = int.Parse(Console.ReadLine());
     Console.WriteLine();
+
     return op;
   }
 
   public static int MenuVendedorVenda(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine();
     Console.WriteLine("|====== Supermarket System ======|");
     Console.WriteLine("|             VENDA              |");
@@ -276,6 +319,13 @@ class  MainClass{
 
 
   public static int MenuClienteLogin(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine("|===== Supermarket System =====|");
     Console.WriteLine("|                              |");
     Console.WriteLine("| 00 - Sair do sistema!        |");
@@ -291,6 +341,13 @@ class  MainClass{
   }
 
   public static int MenuClienteLogout(){
+    ncategoria.Salvar();
+    nproduto.Salvar();
+    ncliente.Salvar();
+    npromocao.Salvar();
+    nvenda.Salvar();
+    navaliacao.Salvar();
+      
     Console.WriteLine("Bem vindo(a), " + clienteLogin.Nome + "!");
     Console.WriteLine("|======= Supermarket System ======|");
     Console.WriteLine("|                                 |");
@@ -477,7 +534,7 @@ class  MainClass{
     DateTime nasc = DateTime.Parse(Console.ReadLine());
     Console.Write("Informe seu telefone (00 00000-0000): ");
     string telefone = Console.ReadLine();
-    Console.Write("Informe seu endereço (rua, numero, bairro e cidade): ");
+    Console.Write("Informe seu endereço: ");
     string endereço = Console.ReadLine();
 
     // Instaciar a classe de Cliente

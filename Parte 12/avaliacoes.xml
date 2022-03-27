@@ -24,4 +24,16 @@
     </cliente>
     <clienteId>2</clienteId>
   </Avaliacao>
+  <Avaliacao>
+    <Id>3</Id>
+    <Nota>5</Nota>
+    <cliente>
+      <Id>3</Id>
+      <Nome>Lívia Rachel</Nome>
+      <Telefone>84 99999-9666</Telefone>
+      <Endereço>Rua Dos Astronautas, 11</Endereço>
+      <Nascimento>2000-11-06T00:00:00</Nascimento>
+    </cliente>
+    <clienteId>3</clienteId>
+  </Avaliacao>
 </ArrayOfAvaliacao>
