@@ -29,14 +29,14 @@ class  MainClass{
       Console.WriteLine(erro.Message);
     }
 
-    int op = 99;
+    int op = -1;
     int opção = 0;
     int perfil = 0;
     
     do {
       try{
         if (perfil == 0){
-          op = -1;
+          op = 0;
           perfil = MenuUsuario();
         }
         if (perfil == 1){
