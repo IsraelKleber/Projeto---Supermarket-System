@@ -29,14 +29,14 @@ class  MainClass{
       Console.WriteLine(erro.Message);
     }
 
-    int op = -1;
+    int op = 99;
     int opção = 0;
     int perfil = 0;
     
     do {
       try{
         if (perfil == 0){
-          op = 0;
+          op = -1;
           perfil = MenuUsuario();
         }
         if (perfil == 1){
@@ -347,7 +347,7 @@ class  MainClass{
     npromocao.Salvar();
     nvenda.Salvar();
     navaliacao.Salvar();
-      
+    Console.WriteLine();
     Console.WriteLine("Bem vindo(a), " + clienteLogin.Nome + "!");
     Console.WriteLine("|======= Supermarket System ======|");
     Console.WriteLine("|                                 |");
@@ -637,6 +637,7 @@ class  MainClass{
   
   public static void ClienteVendaListar(){
     Console.WriteLine("|======== Minhas Compras ========|");
+    Console.WriteLine();
     //Listar as vendas do cliente
     List<Venda> vs = nvenda.Listar(clienteLogin);
     if (vs.Count == 0) {
@@ -661,7 +662,7 @@ class  MainClass{
   public static void ClienteProdutoInserir(){
     // Lista os produtos cadastrados no sistema
     ProdutoListar();
-    Console.WriteLine("Informe o código do produto a ser comprado: ");
+    Console.Write("Informe o código do produto a ser comprado: ");
     int id = int.Parse(Console.ReadLine());
     Console.Write("Informe a quantidade: ");
     int qtd = int.Parse(Console.ReadLine());
@@ -673,6 +674,9 @@ class  MainClass{
         clienteVenda = new Venda(DateTime.Now, clienteLogin);}
       nvenda.ItemInserir(clienteVenda, qtd, p);
     }
+    Console.WriteLine();
+    Console.WriteLine("Produto inserido no carrinho");
+    Console.WriteLine();
   }
   
   public static void ClienteCarrinhoVisualizar(){
@@ -690,8 +694,12 @@ class  MainClass{
   
   public static void ClienteCarrinhoLimpar(){
     //Verificar se existe um carrinho
-    if (clienteVenda != null)
+    if (clienteVenda != null){
       nvenda.ItemExcluir(clienteVenda);
+      Console.WriteLine();
+      Console.WriteLine("Carrinho esvaziado com sucesso");
+      Console.WriteLine();
+    }
   }
   
   public static void ClienteCarrinhoComprar(){
@@ -705,6 +713,9 @@ class  MainClass{
     nvenda.Inserir(clienteVenda, false);
     //Inicia um novo carrinho
     clienteVenda = null;
+    Console.WriteLine();
+    Console.WriteLine("Compra realizada com sucesso");
+    Console.WriteLine();
   }
 
   public static void AvaliacaoInserir(){

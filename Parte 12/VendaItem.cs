@@ -42,7 +42,7 @@ public class VendaItem {
     return produto;
   }
   public override string ToString(){
-    return produto.GetDescricao() + " - Qtd:" + qtd + " - Preço: " + preco.ToString("c2");
+    return produto.GetDescricao() + " - Unidade: " + qtd + " - Preço: " + preco.ToString("c2");
   }
 }
 

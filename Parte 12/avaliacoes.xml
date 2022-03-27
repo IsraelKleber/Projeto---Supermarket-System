@@ -1,2 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfAvaliacao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfAvaliacao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Avaliacao>
+    <Id>1</Id>
+    <Nota>5</Nota>
+    <cliente>
+      <Id>1</Id>
+      <Nome>Erick Carlos</Nome>
+      <Telefone>84 987526352</Telefone>
+      <Endereço>Tv das Massarandubas, Nº69</Endereço>
+      <Nascimento>2000-04-08T00:00:00</Nascimento>
+    </cliente>
+    <clienteId>1</clienteId>
+  </Avaliacao>
+  <Avaliacao>
+    <Id>2</Id>
+    <Nota>4</Nota>
+    <cliente>
+      <Id>2</Id>
+      <Nome>Israel</Nome>
+      <Telefone>84 999999666</Telefone>
+      <Endereço>Rua Bandeira Junior, Nº224C</Endereço>
+      <Nascimento>2000-11-18T00:00:00</Nascimento>
+    </cliente>
+    <clienteId>2</clienteId>
+  </Avaliacao>
+</ArrayOfAvaliacao>

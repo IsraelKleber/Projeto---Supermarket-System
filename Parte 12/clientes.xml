@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCliente xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Cliente>
+    <Id>3</Id>
+    <Nome>Alcides</Nome>
+    <Telefone>84 987516325</Telefone>
+    <Endereço>Rua Jardins, Nº666</Endereço>
+    <Nascimento>2000-04-23T00:00:00</Nascimento>
+  </Cliente>
+  <Cliente>
     <Id>1</Id>
     <Nome>Erick Carlos</Nome>
     <Telefone>84 987526352</Telefone>
@@ -13,5 +20,12 @@
     <Telefone>84 999999666</Telefone>
     <Endereço>Rua Bandeira Junior, Nº224C</Endereço>
     <Nascimento>2000-11-18T00:00:00</Nascimento>
+  </Cliente>
+  <Cliente>
+    <Id>4</Id>
+    <Nome>Lívia Rachell</Nome>
+    <Telefone>84 968965896</Telefone>
+    <Endereço>Rua dos Astronautas, Nº11</Endereço>
+    <Nascimento>2000-11-06T00:00:00</Nascimento>
   </Cliente>
 </ArrayOfCliente>
