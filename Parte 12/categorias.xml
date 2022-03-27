@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCategoria xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Categoria>
-    <Id>1</Id>
-    <Descricao>Padaria</Descricao>
-  </Categoria>
-  <Categoria>
     <Id>2</Id>
     <Descricao>Adega e Bebidas</Descricao>
   </Categoria>
   <Categoria>
     <Id>3</Id>
     <Descricao>Higiene e Limpeza</Descricao>
+  </Categoria>
+  <Categoria>
+    <Id>1</Id>
+    <Descricao>Padaria</Descricao>
   </Categoria>
 </ArrayOfCategoria>

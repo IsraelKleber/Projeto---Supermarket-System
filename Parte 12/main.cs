@@ -539,7 +539,7 @@ class  MainClass{
   public static void PromocaoExcluir(){
     Console.WriteLine("|==== Exclusão de Promoções ====|");
     Console.WriteLine();
-    ProdutoListar();
+    PromocaoListar();
     Console.Write("Informe o nº da promoção que deseja excluir: ");
     int id = int.Parse(Console.ReadLine());
     // Instaciar a classe de Categoria

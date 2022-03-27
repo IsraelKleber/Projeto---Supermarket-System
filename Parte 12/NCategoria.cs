@@ -25,10 +25,12 @@ class NCategoria {
   }
   
   public Categoria[] Listar() {
-    Categoria[] c = new Categoria[contadorcategoria];
-    Array.Copy(categorias, c, contadorcategoria);
-    c.OrderBy(obj => obj.GetDescricao());
-    return c;
+    //Categoria[] c = new Categoria[contadorcategoria];
+    //Array.Copy(categorias, c, contadorcategoria);
+    //c.OrderBy(obj => obj.GetDescricao());
+    //return c;
+
+      return categorias.Take(contadorcategoria).OrderBy(obj => obj.GetDescricao()).ToArray();
   }
 
   public Categoria Listar(int id){
