@@ -629,11 +629,15 @@ class  MainClass{
        return;
     }
     foreach(Venda v in vs) {
+      double total = 0;
       Console.WriteLine(v);
-      foreach (VendaItem item in nvenda.ItemListar(v))
+      foreach (VendaItem item in nvenda.ItemListar(v)){
         Console.WriteLine(" " + item);
-    }
+          total += (item.GetPreco() * item.GetQtd());
+      }
+    Console.WriteLine(" Total da compra: R$" + total + "\n");
     Console.WriteLine();
+    }
   }
   
   public static void ClienteLogin(){
@@ -734,10 +738,16 @@ class  MainClass{
       Console.WriteLine();
       return;
     }
+
+    double total = 0;
     
     List<VendaItem> itens = nvenda.ItemListar(clienteVenda);
-    foreach(VendaItem item in itens) Console.WriteLine(item);
+    foreach(VendaItem item in itens){
+        total += (item.GetPreco() * item.GetQtd());
+        Console.WriteLine(item);
+    }
     Console.WriteLine();
+    Console.WriteLine("Total do carrinho: R$ " + total + "\n");
   }
   
   public static void ClienteCarrinhoLimpar(){
