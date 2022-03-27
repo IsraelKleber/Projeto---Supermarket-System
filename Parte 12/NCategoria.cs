@@ -25,14 +25,24 @@ class NCategoria {
   }
   
   public Categoria[] Listar() {
+    //Categoria[] c = new Categoria[contadorcategoria];
+    //Array.Copy(categorias, c, contadorcategoria);
+    //c.OrderBy(obj => obj.GetDescricao());
+    //return c;
 
       return categorias.Take(contadorcategoria).OrderBy(obj => obj.GetDescricao()).ToArray();
   }
 
   public Categoria Listar(int id){
-    for (int i = 0; i < contadorcategoria; i++)
+    /*for (int i = 0; i < contadorcategoria; i++)
       if (categorias[i].GetId() == id) return categorias[i];
-    return null;
+    return null;*/
+
+    var r = categorias.Where(obj => obj.GetId() == id);
+    if (r.Count()==0) return null;
+    return r.First();
+    
+    //return categorias.FirstOrDefault(obj => obj.GetId() == id);
   }
 
   public void Inserir(Categoria c){

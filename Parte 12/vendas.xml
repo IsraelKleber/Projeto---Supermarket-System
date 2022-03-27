@@ -36,4 +36,17 @@
       </VendaItem>
     </Itens>
   </Venda>
+  <Venda>
+    <Id>3</Id>
+    <Data>2022-03-27T21:59:14.387581+00:00</Data>
+    <Carrinho>false</Carrinho>
+    <ClienteId>2</ClienteId>
+    <Itens>
+      <VendaItem>
+        <Qtd>10</Qtd>
+        <Preco>0.5</Preco>
+        <ProdutoId>1</ProdutoId>
+      </VendaItem>
+    </Itens>
+  </Venda>
 </ArrayOfVenda>

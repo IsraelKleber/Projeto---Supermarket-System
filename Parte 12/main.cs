@@ -673,12 +673,15 @@ class  MainClass{
        return;
     }
     foreach(Venda v in vs) {
+      double total = 0;
       Console.WriteLine(v);
-      foreach (VendaItem item in nvenda.ItemListar(v))
-       Console.WriteLine(" " + item);
+      foreach (VendaItem item in nvenda.ItemListar(v)){
+        Console.WriteLine(" " + item);
+          total += (item.GetPreco() * item.GetQtd());
+      }
+      Console.WriteLine(" Total da compra: R$" + total + "\n");
+      Console.WriteLine();
     }
-    Console.WriteLine();
-   
   }
   
   public static void ClienteProdutoListar(){
