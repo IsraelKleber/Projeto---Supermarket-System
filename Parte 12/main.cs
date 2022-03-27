@@ -370,7 +370,7 @@ class  MainClass{
     return op;
   }
   public static void CategoriaListar(){
-    Console.WriteLine("|==== Lista de Categorias ====|");
+    Console.WriteLine("|====== Lista de Categorias ======|");
     Console.WriteLine();
     Categoria[] cs = ncategoria.Listar();
     if (cs.Length == 0){
@@ -394,9 +394,12 @@ class  MainClass{
     Categoria c = new Categoria(id, descricao);
     // inserção da categoria
     ncategoria.Inserir(c);
+    Console.WriteLine();
+    Console.Write("Categoria inserida com sucesso!");
+    Console.WriteLine();
   }
   public static void CategoriaAtualizar(){
-    Console.WriteLine("|==== Atualização de Categorias ====|");
+    Console.WriteLine("|=== Atualização de Categorias ===|");
     CategoriaListar();
     Console.Write("Informe o nº da categoria que deseja atualizar: ");
     int id = int.Parse(Console.ReadLine());
@@ -406,10 +409,12 @@ class  MainClass{
     Categoria c = new Categoria(id, descricao);
     // atualizar categoria
     ncategoria.Atualizar(c);
+    Console.WriteLine();
+    Console.WriteLine("Categoria atualiada com sucesso!!");
 
   }
   public static void CategoriaExcluir(){
-    Console.WriteLine("|==== Exclusão de Categorias ====|");
+    Console.WriteLine("|===== Exclusão de Categorias ====|");
     CategoriaListar();
     Console.Write("Informe o nº da categoria que deseja excluir: ");
     int id = int.Parse(Console.ReadLine());
@@ -417,9 +422,11 @@ class  MainClass{
     Categoria c = ncategoria.Listar(id);
     // exclusão da categoria
     ncategoria.Excluir(c);
+    Console.WriteLine();
+    Console.WriteLine("Categoria excluída com sucesso!");
   }
   public static void ProdutoListar(){
-    Console.WriteLine("|==== Lista de Produtos====|");
+    Console.WriteLine("|====== Lista de Produtos ======|");
     Console.WriteLine();
     Produto[] ps = nproduto.Listar();
     if (ps.Length == 0){
@@ -432,7 +439,7 @@ class  MainClass{
 
   }
   public static void ProdutoInserir(){
-    Console.WriteLine("|==== Inserção de Produtos ====|");
+    Console.WriteLine("|===== Inserção de Produtos =====|");
     Console.WriteLine();
     Console.Write("Informe um código para o produto: ");
     int id = int.Parse(Console.ReadLine());
@@ -451,9 +458,12 @@ class  MainClass{
     Produto p = new Produto(id, descricao, qtd, preco, c);
     //Atualizar Produto
     nproduto.Inserir(p);
+    Console.WriteLine();
+    Console.Write("Produto inserido com sucesso!");
+    Console.WriteLine();
   }
   public static void ProdutoAtualizar(){
-    Console.WriteLine("|==== Atualização de Produtos ====|");
+    Console.WriteLine("|=== Atualização de Produtos ===|");
     Console.WriteLine();
     ProdutoListar();
     Console.Write("Informe o nº do produto que deseja atualizar: ");
@@ -473,9 +483,12 @@ class  MainClass{
     Produto p = new Produto(id, descricao, qtd, preco, c);
     //inserção do Produto
     nproduto.Atualizar(p);
+    Console.WriteLine();
+    Console.Write("Produto atualizado com sucesso!");
+    Console.WriteLine();
   }
   public static void ProdutoExcluir(){
-    Console.WriteLine("|==== Exclusão de Produtos ====|");
+    Console.WriteLine("|===== Exclusão de Produtos =====|");
     Console.WriteLine();
     ProdutoListar();
     Console.Write("Informe o nº do produto que deseja excluir: ");
@@ -484,9 +497,12 @@ class  MainClass{
     Produto p = nproduto.Listar(id);
     // exclusão da categoria
     nproduto.Excluir(p);
+    Console.WriteLine();
+    Console.Write("Produto excluído com sucesso!");
+    Console.WriteLine();
   }
   public static void PromocaoListar(){
-    Console.WriteLine("|==== Lista de Promoções ====|");
+    Console.WriteLine("|====== Lista de Promoções ======|");
     Console.WriteLine();
     Promocao[] pp = npromocao.Listar();
     if (pp.Length == 0){
@@ -503,16 +519,16 @@ class  MainClass{
 
   }
     public static void PromocaoAtualizar(){
-    Console.WriteLine("|==== Atualização de Promoções ====|");
+    Console.WriteLine("|=== Atualização de Promoções ===|");
     Console.WriteLine();
   }
   public static void PromocaoExcluir(){
-    Console.WriteLine("|===== Exclusão de Promoções =====|");
+    Console.WriteLine("|==== Exclusão de Promoções ====|");
     Console.WriteLine();
 
   }
   public static void ClienteListar(){
-    Console.WriteLine("|==== Lista de clientes ====|");
+    Console.WriteLine("|====== Lista de clientes ======|");
     // Lista os clientes
     Console.WriteLine();
     List<Cliente> cs = ncliente.Listar();
@@ -526,13 +542,13 @@ class  MainClass{
 
   }
   public static void ClienteInserir(){
-    Console.WriteLine("|==== Inserção de clientes ====|");
+    Console.WriteLine("|===== Inserção de clientes =====|");
     Console.WriteLine();
     Console.Write("Informe o nome do cliente: ");
     string nome = Console.ReadLine();
     Console.Write("Informe a data de nascimento (dd/mm/aaaa): ");
     DateTime nasc = DateTime.Parse(Console.ReadLine());
-    Console.Write("Informe seu telefone (00 00000-0000): ");
+    Console.Write("Informe seu telefone (00 000000000): ");
     string telefone = Console.ReadLine();
     Console.Write("Informe seu endereço: ");
     string endereço = Console.ReadLine();
@@ -541,9 +557,12 @@ class  MainClass{
     Cliente c = new Cliente { Nome = nome, Nascimento = nasc, Telefone = telefone, Endereço = endereço};
     // inserção do cliente
     ncliente.Inserir(c);
+    Console.WriteLine();
+    Console.Write("Cliente inserido com sucesso!");
+    Console.WriteLine();
   }
   public static void ClienteAtualizar(){
-    Console.WriteLine("|==== Atualização de clientes ====|");
+    Console.WriteLine("|=== Atualização de clientes ===|");
     ClienteListar();
     Console.Write("Informe o código do cliente que deseja atualizar: ");
     int id = int.Parse(Console.ReadLine());
@@ -559,10 +578,12 @@ class  MainClass{
     Cliente c = new Cliente { Id = id, Nome = nome, Nascimento = nasc, Telefone = telefone, Endereço = endereço};
     // Atualiza o cliente
     ncliente.Atualizar(c);
-
+    Console.WriteLine();
+    Console.Write("Cliente atualizado com sucesso!");
+    Console.WriteLine();
   }
   public static void ClienteExcluir(){
-    Console.WriteLine("|==== Exclusão de clientes ====|");
+    Console.WriteLine("|===== Exclusão de clientes =====|");
     ClienteListar();
     Console.Write("Informe o código do cliente que deseja excluir: ");
     int id = int.Parse(Console.ReadLine());
@@ -570,9 +591,13 @@ class  MainClass{
     Cliente c = ncliente.Listar(id);
     // exclusão do CLiente
     ncliente.Excluir(c);
+    Console.WriteLine();
+    Console.Write("Cliente excluído com sucesso!");
+    Console.WriteLine();
   }
   public static void VendaListar() {
-     Console.WriteLine("----- Lista de Vendas -----");
+    Console.WriteLine("|======= Lista de Vendas =======|");
+    Console.WriteLine();
   //Listar as vendas cadastradas 
     List<Venda> vs = nvenda.Listar();
     if (vs.Count == 0) {
@@ -589,7 +614,7 @@ class  MainClass{
   }
   
   public static void ClienteLogin(){
-    Console.WriteLine("|----  Login do Cliente ----|");
+    Console.WriteLine("|======= Login do Cliente =======|");
     Console.WriteLine();
     ClienteListar();
     Console.Write("Informe o código do cliente que deseja logar: ");
@@ -602,7 +627,7 @@ class  MainClass{
   }
   
   public static void ClienteLogout(){
-    Console.WriteLine("|---- Logout do Cliente ----|");
+    Console.WriteLine("|====== Logout do Cliente ======|");
     Console.WriteLine();
     if (clienteVenda != null) nvenda.Inserir(clienteVenda, true);
     // faz o Logout do cliente
@@ -611,7 +636,7 @@ class  MainClass{
   }
   
   public static void ClienteVendaListar(){
-    Console.WriteLine("|----  Minhas Compras ----|");
+    Console.WriteLine("|======== Minhas Compras ========|");
     //Listar as vendas do cliente
     List<Venda> vs = nvenda.Listar(clienteLogin);
     if (vs.Count == 0) {
@@ -683,23 +708,25 @@ class  MainClass{
   }
 
   public static void AvaliacaoInserir(){
-  Console.WriteLine("|==== Realizar Avaliação ====|");
-  Console.WriteLine();
-  Console.Write(clienteLogin.Nome + ", avalie o site de 1 a 5 com seu nível de satisfação: ");
-  int Nota = int.Parse(Console.ReadLine());
-    while (Nota < 1 || Nota > 5){
-      Console.Write("Nota inválida. Digite novamente: ");
-      Nota = int.Parse(Console.ReadLine());
-    }
-
+    Console.WriteLine("|====== Realizar Avaliação ======|");
+    Console.WriteLine();
+    Console.Write(clienteLogin.Nome + ", avalie o site de 1 a 5 com seu nível de satisfação: ");
+    int Nota = int.Parse(Console.ReadLine());
+      while (Nota < 1 || Nota > 5){
+        Console.Write("Nota inválida. Digite novamente: ");
+        Nota = int.Parse(Console.ReadLine());
+      }
+  
     Avaliacao avaliacao = new Avaliacao(clienteLogin, Nota);
 
     navaliacao.Inserir(avaliacao);
     Console.WriteLine();
+    Console.Write("Agradecemos pela sua avaliação!");
+    Console.WriteLine();
   }
   
   public static void AvaliacaoMostrar(){
-    Console.WriteLine("|======= Avaliações =======|");
+    Console.WriteLine("|========== Avaliações ==========|");
     Console.WriteLine();
     List<Avaliacao> avaliacaomostrar = navaliacao.Listar();
 
