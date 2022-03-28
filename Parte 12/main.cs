@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using System.Linq;
 
 class  MainClass{ 
   private static NCategoria ncategoria = NCategoria.Singleton;
@@ -87,10 +88,8 @@ class  MainClass{
               }
             }
             else if(opção == 5){
-              op = MenuVendedorVenda();
-              switch (op){
-                case 0 : op = 0; break;
-                case 1 : VendaListar(); break;
+              switch (opção){
+                case 5 : VendaListar(); break;
               }
             }
             else if(opção == 6){
@@ -293,30 +292,6 @@ class  MainClass{
 
     return op;
   }
-
-  public static int MenuVendedorVenda(){
-    ncategoria.Salvar();
-    nproduto.Salvar();
-    ncliente.Salvar();
-    npromocao.Salvar();
-    nvenda.Salvar();
-    navaliacao.Salvar();
-      
-    Console.WriteLine();
-    Console.WriteLine("|====== Supermarket System ======|");
-    Console.WriteLine("|             VENDA              |");
-    Console.WriteLine("| 00 - Sair do sistema!          |");
-    Console.WriteLine("|                                |");
-    Console.WriteLine("| 01 - Listar                    |");
-    Console.WriteLine("|                                |");
-    Console.WriteLine("| 99 - Voltar ao menu anterior   |");
-    Console.WriteLine("|================================|");
-    Console.Write("Informe a opção desejada: ");
-    int op = int.Parse(Console.ReadLine());
-    Console.WriteLine();
-    return op;
-  }
-
 
   public static int MenuClienteLogin(){
     ncategoria.Salvar();
@@ -635,9 +610,21 @@ class  MainClass{
         Console.WriteLine(" " + item);
           total += (item.GetPreco() * item.GetQtd());
       }
-    Console.WriteLine(" Total da compra: R$" + total + "\n");
+    Console.WriteLine(" Total da compra: R$" + total.ToString("0.00") + "\n");
     Console.WriteLine();
     }
+   
+    var r1 = vs.Select(v => new {
+      MesAno = v.Data.Month + "/" + v.Data.Year,
+      Total = v.Itens.Sum(vi => vi.Qtd * vi.Preco) 
+    });
+
+    var r2 = r1.GroupBy(item => item.MesAno,
+      (key, items) => new {
+        MesAno = key,
+        Total = items.Sum(item => item.Total) });    
+    foreach(var item in r2) Console.WriteLine(item);
+    
   }
   
   public static void ClienteLogin(){
@@ -679,7 +666,7 @@ class  MainClass{
         Console.WriteLine(" " + item);
           total += (item.GetPreco() * item.GetQtd());
       }
-      Console.WriteLine(" Total da compra: R$" + total + "\n");
+      Console.WriteLine(" Total da compra: R$" + total.ToString("0.00") + "\n");
       Console.WriteLine();
     }
   }
@@ -750,7 +737,7 @@ class  MainClass{
         Console.WriteLine(item);
     }
     Console.WriteLine();
-    Console.WriteLine("Total do carrinho: R$ " + total + "\n");
+    Console.WriteLine("Total do carrinho: R$ " + total.ToString("0.00") + "\n");
   }
   
   public static void ClienteCarrinhoLimpar(){
