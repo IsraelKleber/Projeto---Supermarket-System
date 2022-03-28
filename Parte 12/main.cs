@@ -116,11 +116,10 @@ class  MainClass{
             case 2  : ClienteProdutoListar(); break;
             case 3  : ClientePromocaoListar(); break;
             case 4  : ClienteProdutoInserir(); break;
-            case 5  : ClienteProdutoInserir(); break;
-            case 6  : ClienteCarrinhoVisualizar(); break;
-            case 7  : ClienteCarrinhoLimpar(); break;
-            case 8  : ClienteCarrinhoComprar(); break;
-            case 9  : AvaliacaoInserir(); break;
+            case 5  : ClienteCarrinhoVisualizar(); break;
+            case 6  : ClienteCarrinhoLimpar(); break;
+            case 7  : ClienteCarrinhoComprar(); break;
+            case 8  : AvaliacaoInserir(); break;
             case 99 : ClienteLogout(); break;
           }
         }
@@ -332,11 +331,10 @@ class  MainClass{
     Console.WriteLine("| 02 - Listar produtos             |");
     Console.WriteLine("| 03 - Listar promoções            |");
     Console.WriteLine("| 04 - Inserir produto no carrinho |");
-    Console.WriteLine("| 05 - Inserir promoção no carrinho|");
-    Console.WriteLine("| 06 - Visualizar o carrinho       |");
-    Console.WriteLine("| 07 - Limpar o carrinho           |");
-    Console.WriteLine("| 08 - Confirmar a compra          |");
-    Console.WriteLine("| 09 - Avaliação do site           |");
+    Console.WriteLine("| 05 - Visualizar o carrinho       |");
+    Console.WriteLine("| 06 - Limpar o carrinho           |");
+    Console.WriteLine("| 07 - Confirmar a compra          |");
+    Console.WriteLine("| 08 - Avaliação do site           |");
     Console.WriteLine("|                                  |");
     Console.WriteLine("| 99 - Voltar ao menu anterior     |");
     Console.WriteLine("|==================================|");
@@ -699,26 +697,6 @@ class  MainClass{
     Console.WriteLine();
     Console.WriteLine("Produto inserido no carrinho");
     Console.WriteLine();
-  }
-
-  public static void ClientePromocaoInserir(){/*
-    // Lista os produtos cadastrados no sistema
-    PromocaoListar();
-    Console.Write("Informe o código da promoção a ser comprado: ");
-    int id = int.Parse(Console.ReadLine());
-    Console.Write("Informe a quantidade: ");
-    int qtd = int.Parse(Console.ReadLine());
-    // procurar o produto pelo id
-    Promocao pp = npromocao.Listar(id);
-    // Verificar se o produto foi localizado 
-    if(pp != null){
-      if (clienteVenda == null){  
-        clienteVenda = new Venda(DateTime.Now, clienteLogin);}
-      nvenda.ItemInserir(clienteVenda, qtd, pp);
-    }
-    Console.WriteLine();
-    Console.WriteLine("Promoção inserida no carrinho");
-    Console.WriteLine();*/
   }
   
   public static void ClienteCarrinhoVisualizar(){

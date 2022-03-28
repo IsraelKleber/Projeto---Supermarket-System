@@ -20,7 +20,7 @@ public class Venda {
   public List<VendaItem> Itens {get => itens; set => itens = value; }
   public Venda() { }
   
- public Venda(DateTime data, Cliente cliente) {
+  public Venda(DateTime data, Cliente cliente) {
   this.data = data;
   this.carrinho = true;
   this.cliente = cliente;
