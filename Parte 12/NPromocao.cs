@@ -60,7 +60,4 @@ class NPromocao{
     contadorpromocao--;
   }
 
-  public void Criarlista(){
-    
-  }
 }

@@ -19,9 +19,9 @@ class NCategoria {
     contadorcategoria = categorias.Length;
   }
   
-    public void Salvar() {
-      Arquivo<Categoria[]> f = new Arquivo<Categoria[]>();
-      f.Salvar("./Parte 12/categorias.xml", Listar());
+  public void Salvar() {
+    Arquivo<Categoria[]> f = new Arquivo<Categoria[]>();
+    f.Salvar("./Parte 12/categorias.xml", Listar());
   }
   
   public Categoria[] Listar() {

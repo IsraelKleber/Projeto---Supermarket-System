@@ -24,13 +24,10 @@ class NAvaliacao{
   }
 
   private void AtualizarAvaliacao() {
-    //Percorrer o vetor de produtos para atualizar a categoria do produto
+
     for(int i = 0; i < avaliacoes.Count; i++) {
-       //Cada produto no vetor
       Avaliacao a = avaliacoes[i];
-       //Recuperar a categoria
       Cliente c =  NCliente.Singleton.Listar(a.Id);
-       // Associação entre produto e categoria
       if (c != null) {
         a.cliente = c;
       }
